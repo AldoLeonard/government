@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
+  body {
+      background: rgb(247, 250, 255);
+      height: 100vh;
+      display: grid;
+      place-content: center;
+
+  }
+
+  ul {
+    list-style: none;
+  }
+
+.heading {
+    margin: auto;
+    text-align: center;
+    width: 300px;
+}
+
+  .heading h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .nama-btn {
+    position: relative;
+    height: 50px;
+    max-width: 300px;
+    margin-bottom: 10px;
+    margin-top: 50px;
+
+  }
+  .nama-btn  label {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    transform: translateY(-50%);
+    height: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    background: #000;
+    padding: 10px 15px 15px 15px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .nama-btn input {
+    position: relative;
+    width: 205px;
+    height: 100%;
+    outline: none;
+    border: none;
+    border: 1px solid #000;
+    color: #5CDB95;
+    border-radius: 5px;
+  }
+
+  .upload-btn input[type="file"] {
+    display: none;
+    position: relative;
+  }
+
+  .upload-btn label {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    color: #fff;
+    background: lime;
+    text-align: center;
+    padding: 15px 40px;
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .gambar-lama {
+    position: relative;
+    width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .gambar-lama img {
+    object-fit: cover;
+    object-position: center;
+    width: 300px;
+  }
+
+
+
+
+  .submit-btn {
+    position: relative;
+  }
+
+  .submit-btn button{
+    background: green;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    cursor: pointer;
+    width: 300px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .submit-btn button:hover {
+    background: rgb(0, 93, 0);
+  }
