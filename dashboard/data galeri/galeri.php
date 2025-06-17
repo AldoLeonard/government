@@ -1,10 +1,10 @@
 <?php
 require("functions.php");
-$berita = query("SELECT * FROM berita ORDER BY id ASC");
+$galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 
 //tombol cari diklik
 if(isset($_POST["cari"])) {
-    $berita = cary($_POST["keyword"]);
+    $galeri = cari($_POST["keyword"]);
 }
 ?>
 
@@ -12,8 +12,9 @@ if(isset($_POST["cari"])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="berita.css">
+    <title> Dashboard</title>
+    <link rel="stylesheet" href="galeri.css">
+    <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -29,7 +30,7 @@ if(isset($_POST["cari"])) {
           <span class="link_name">Dashboard</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="../dashboard.php/">Dashboard</a></li>
+          <li><a class="link_name" href="../dashboard.php">Dashboard</a></li>
         </ul>
       </li>
       <li>
@@ -42,9 +43,9 @@ if(isset($_POST["cari"])) {
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Update</a></li>
-          <li><a href="#">Berita</a></li>
+          <li><a href="../data berita/berita.php">Berita</a></li>
           <li><a href="#">Artikel</a></li>
-          <li><a href="../data galeri/galeri.php">Galeri</a></li>
+          <li><a href="#">Galeri</a></li>
         </ul>
       </li>
       <li>
@@ -90,11 +91,11 @@ if(isset($_POST["cari"])) {
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      <span class="text"><h1>Daftar Berita</h1></span>
+      <span class="text"><h1>Daftar galeri</h1></span>
     </div>
     <div class="galeri-container">
     <div class="tambah-btn">
-    <a href="tambah.php">Tambah Data Berita</a>
+    <a href="tambah.php">Tambah Data Galeri</a>
     </div>
     <br><br>
 
@@ -102,36 +103,31 @@ if(isset($_POST["cari"])) {
     <div class="search-box">
             <i class="bx bx-search"></i>
             <input type="text" name="keyword" autofocus  placeholder="Cari Galeri..."
-            autocomplete="off">
-            <button type="submit" name="cari"></button>
+            autocomplete="off" id="keyword">
+            <button type="submit" name="cari" id="tombol-cari"></button>
         </div>
     </form>
-    <div class="table-responsive">
+
+    <div class="table-responsive" id="container">
     <table>
         <thead>
         <tr>
             <th>Nomer</th>
-            <th>Kategori</th>
-            <th>Judul</th>
-            <th>Tanggal</th>
-            <th>Deskripsi</th>
+            <th>Nama</th>
             <th>Gambar</th>
             <th>Aksi</th>
         </tr>
         <?php $i=1;  ?>
-        <?php foreach( $berita as $row) : ?>
-            </thead>
-            <tbody>
+        <?php foreach( $galeri as $row) : ?>
+        </thead>
+        <tbody>
         <tr>
             <div class="table-text">
             <td class="text"><?= $i; ?></td>
-            <td class="text"><?= $row['kategori']; ?></td>
-            <td class="text"><?= $row['judul']; ?></td>
-            <td class="text"><?= $row['tanggal']; ?></td>
-            <td class="text"><?= $row['deskripsi']; ?></td>
-            <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" width="300px"></td>
+            <td class="text"><?= $row['nama']; ?></td>
+            <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" ></td>
             <td>
-            <span class="action_btn">
+                <span class="action_btn">
                 <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
                 <a href="hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin?');">Hapus</a>
                 </span>
@@ -147,6 +143,7 @@ if(isset($_POST["cari"])) {
     </div>
   </section>
  
+  <script src="script.js"></script>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {

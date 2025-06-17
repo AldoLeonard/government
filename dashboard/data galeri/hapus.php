@@ -4,18 +4,18 @@ require("functions.php");
 
 $id = $_GET["id"];
 
-if(hafus($id) > 0) {
+if( hapus($id) > 0) {
     echo "
         <script>
          alert('Data Berhasil Dihapus!');
-         document.location.href = 'berita.php';
+         document.location.href = '../data galeri/galeri.php';
          </script>
         ";
 } else {
     echo "
     <script>
         alert('Data Gagal Dihapus!');
-        document.location.href = 'berita.php';
+        document.location.href = 'dashboard.php';
         </script>
         ";
 }

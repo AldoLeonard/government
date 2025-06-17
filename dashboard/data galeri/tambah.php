@@ -4,17 +4,17 @@ require ("functions.php");
 
     
 
-    if(tambahb($_POST) > 0) {
+    if(tambah($_POST) > 0) {
         echo "
         <script>
         alert('Data Berhasil Ditambahkan!');
-         document.location.href = 'berita.php';
+         document.location.href = '../data galeri/galeri.php';
          </script>
         ";
     } else {
         echo "<script>
         alert('Data Gagal Ditambahkan!');
-        document.location.href = 'berita.php';
+        document.location.href = '../data galeri/galeri.php';
         </script>";
     }
  }
@@ -37,21 +37,9 @@ require ("functions.php");
     <div>
     <form action="" method="post" enctype="multipart/form-data">
         <ul class="box">
-        <li class="nama-btn">
-                <label for="kategori">Kategori</label>
-                <input type="text" name="kategori" id="kategori" require>
-            </li>
-        <li class="nama-btn">
-                <label for="judul">Judul</label>
-                <input type="text" name="judul" id="judul" require>
-            </li>
-        <li class="nama-btn">
-                <label for="tanggal">Tanggal</label>
-                <input type="text" name="tanggal" id="tanggal" require>
-            </li>
-        <li class="nama-btn">
-                <label for="deskripsi">Deskripsi</label>
-                <input type="text" name="deskripsi" id="deskripsi" require>
+            <li class="nama-btn">
+                <label for="nama">Nama</label>
+                <input type="text" name="nama" id="nama" require>
             </li>
             <li class="upload-btn">
                 <label for="gambar">Upload Gambar</label>

@@ -10,13 +10,13 @@ $brt = query("SELECT * FROM berita WHERE id = $id")[0];
         echo "
         <script>
          alert('Data Berhasil Diubah!');
-         document.location.href = 'beritaa.php';
+         document.location.href = 'berita.php';
          </script>
         ";
     } else {
         echo "<script>
         alert('Data Gagal Diubah!');
-        document.location.href = 'beritaa.php';
+        document.location.href = 'berita.php';
         </script>";
     }
  }

@@ -84,7 +84,7 @@ if(isset($_POST["cari"])) {
         <div class="profile_name">Aldo Leonard</div>
         <div class="job">ADMIN</div>
       </div>
-      <i class='bx bx-log-out' ></i>
+      <a href="../homepage.php"><i class='bx bx-log-out'></i></a>
     </div>
   </li>
 </ul>
