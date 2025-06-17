@@ -45,7 +45,7 @@ if(isset($_POST["cari"])) {
           <li><a href="#">Profil</a></li>
           <li><a href="#">Berita</a></li>
           <li><a href="#">Tentang</a></li>
-          <li><a class="active" href="lojin.php"><i class='bx bx-user-circle'></i>Login</a></li>
+          <li><a class="active" href="login/login.php"><i class='bx bx-user-circle'></i>Login</a></li>
         </ul>
       </nav>
 
