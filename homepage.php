@@ -226,17 +226,17 @@ if(isset($_POST["cari"])) {
     <section class="info-container" id="tentang">
         <div class="informasi-kec">
             <div class="info-text">
-                <h1 style="top: 418%; right: 75%;">01</h1>
+                <h1>01</h1>
                 <h3>Jumlah Penduduk</h3>
                 <p>2.099.089 jiwa</p>
             </div>
             <div class="info-text">
-                <h1 style="top: 418%; right: 43.5%;">02</h1>
+                <h1>02</h1>
                 <h3>Luas Wilayah</h3>
                 <p> 984,52 km²</p>
             </div>
             <div class="info-text">
-                <h1 style="top: 418%; right: 14%;">03</h1>
+                <h1>03</h1>
                 <h3>Sebaran Penduduk</h3>
                 <p>2.132 jiwa/km²</p>
             </div>
@@ -249,10 +249,9 @@ if(isset($_POST["cari"])) {
     <div class="footer-content">
         <p>Gemah Ripah Loh Jinawi adalah perjuangan masyarakat sebagai bagian bangsa Indonesia bercita-cita menciptakan ketentraman/perdamaian, kesuburan, keadilan, kemakmuran, tata raharja serta mulia abad.</p>
         <ul class="socials">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="https://web.facebook.com/cirebonkab"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://x.com/cirebonkab?t=HuhgMG3H9JlC5R2Rin6WUw&s=09"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://youtube.com/@cirebonkabtv?si=D73ahb_r69uRCdgm"><i class="fa fa-youtube"></i></a></li>
         </ul>
     </div>
     <div class="copyright">

@@ -769,38 +769,32 @@ input[type="checkbox"]{
   padding-bottom: 100px;
 }
 
-.info-container {
-  box-sizing: border-box;
-  width: 100%;
-margin: auto;
-margin-top: 50px;
-background: #5CDB95;
-}
-
-
 .informasi-kec {
-  width: 90%;
+  width: 100%;
+  background-color: #5CDB95;
   margin: auto;
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 300px;
+  height: auto;
 }
 
 .info-text {
   padding: 20px;
   font-family: 'Raleway', sans-serif;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
 .info-text h1 {
-  position: absolute;
+  position: relative;
   font-size: 10rem;
   color: transparent;
   -webkit-text-stroke: 0.2vw rgb(247, 250, 255);
   text-transform: uppercase;
   opacity: 0.5;
+  line-height: 0.5;
+  padding-top: 30px;
 }
 
 .info-text h3 {
