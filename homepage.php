@@ -32,34 +32,36 @@ if(isset($_POST["cari"])) {
 <body>
 
     <nav>
+        <a href="">
         <div class="logo">
         <div class="logo-img"><img src="images/logo1.png" alt="" width="40px"></div>
         <div class="logo-text"><span>Kab</span><p>Cirebon</p></div>
          </div>
+         </a>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">
           <i class="fas fa-bars"></i>
         </label>
         <ul>
-          <li><a  href="#">Beranda</a></li>
-          <li><a href="#">Profil</a></li>
-          <li><a href="#">Berita</a></li>
-          <li><a href="#">Tentang</a></li>
-          <li><a class="active" href="login/login.php"><i class='bx bx-user-circle'></i>Login</a></li>
+          <li><a  href="#beranda">Beranda</a></li>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#berita">Berita</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a class="active" href="login/login.php"><i class='bx bx-user-circle'></i>Masuk</a></li>
         </ul>
       </nav>
 
     
 
 
-    <section class="beranda">
+    <section class="beranda" id="beranda">
         <div class="inner-beranda">
             <h1>Selamat Datang Di Kabupaten Cirebon</h1>
             <p>Terwujudnya Kabupaten Cirebon, Berbudaya, Sejahtera, Agamis, Maju dan Aman</p>
         </div>
     </section>
 
-    <section class="container-pemerintahan">
+    <section class="container-pemerintahan" id="profil">
         <section class="profil-container">
             <div class="profil">
                 <div class="profil-isi">
@@ -76,7 +78,7 @@ if(isset($_POST["cari"])) {
         </section>
     </section>
 
-    <section>
+    <section id="berita">
         <div class="berita">
             <div class="berita-kiri">
                 <div class="berita-judul">
@@ -109,7 +111,7 @@ if(isset($_POST["cari"])) {
                 <form action="" method="post">
             <div class="search-box">
             <i class="bx bx-search"></i>
-            <input type="text" name="keyword" autofocus  placeholder="Cari Berita..."
+            <input type="text" name="keyword" placeholder="Cari Berita..."
             autocomplete="off" id="keyword">
             <button type="submit" name="cari" id="tombol-cari"></button>
                 </form>
@@ -213,7 +215,7 @@ if(isset($_POST["cari"])) {
 </div>
     </section>
 
-    <section class="info-container">
+    <section class="info-container" id="tentang">
         <div class="informasi-kec">
             <div class="info-text">
                 <h1 style="top: 418%; right: 75%;">01</h1>
