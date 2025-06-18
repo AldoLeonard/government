@@ -95,7 +95,7 @@ if(isset($_POST["cari"])) {
                     <!-- post box 1 -->
                     <div class="post-box">
                         <a href="">
-                        <img src="images/<?php echo $row['gambar']; ?>" alt="" width="100%" height="150px">
+                        <img src="../government/dashboard/data berita/images/<?php echo $row['gambar']; ?>" alt="" width="100%" height="150px">
                         <h2 class="category"><?= $row['kategori']; ?></h2>
                         <a href="" class="post-title">
                         <?= $row['judul']; ?>
@@ -158,7 +158,7 @@ if(isset($_POST["cari"])) {
                     <div class="swiper-wrapper">
                     <!-- Slides -->
                     <?php foreach( $galeri as $row) : ?>
-                    <div class="swiper-slide"><p><?= $row['nama']; ?></p><img src="../tubes/dashboard/data galeri/images/<?php echo $row['gambar']; ?>" alt="" ></div>
+                    <div class="swiper-slide"><p><?= $row['nama']; ?></p><img src="../government/dashboard/data galeri/images/<?php echo $row['gambar']; ?>" alt="" ></div>
 
                     
                     <?php endforeach ?>
