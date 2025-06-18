@@ -345,7 +345,7 @@ input[type="checkbox"]{
 .profil-btn {
     display: inline-block;
     background-color: #5CDB95;
-    color: #EDF5E1;
+    color: #fff;
     text-align: center;
     font-size: 16px;
     font-weight: 500;
@@ -357,8 +357,8 @@ input[type="checkbox"]{
 }
 
 .profil-btn:hover {
-    background: #EDF5E1;
-    color: #379683;
+    background: #3f9565;
+    color: #fff;
 }
 
 .profil-content {
@@ -371,7 +371,7 @@ input[type="checkbox"]{
     background: #000;                              
 }
 
-.profil-content video {
+.profil-content iframe {
     display: block;
     position: relative;
     width: 100%;
@@ -995,7 +995,7 @@ footer {
       margin-right: 10px;
     }
 
-    .profil-content video {
+    .profil-content iframe {
       width: 100%;
     }
 
