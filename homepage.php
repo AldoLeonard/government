@@ -94,6 +94,7 @@ if(isset($_POST["cari"])) {
                  <?php foreach( $berita as $row) : ?>
                     <!-- post box 1 -->
                     <div class="post-box">
+                        <a href="">
                         <img src="images/<?php echo $row['gambar']; ?>" alt="" width="100%" height="150px">
                         <h2 class="category"><?= $row['kategori']; ?></h2>
                         <a href="" class="post-title">
@@ -101,6 +102,7 @@ if(isset($_POST["cari"])) {
                         </a>
                         <span class="post-date"><?= $row['tanggal']; ?></span>
                         <p class="post-description"><?= $row['deskripsi']; ?></p>
+                        </a>
                     </div>
                     <?php $i++;  ?>
                  <?php endforeach; ?> 
@@ -183,6 +185,7 @@ if(isset($_POST["cari"])) {
         <section class="post container">
             <!-- post box 1 -->
             <div class="post-box">
+                <a href="">
                 <img src="images/artikel1.png" alt="" class="post-img">
                 <h2 class="category">Artikel</h2>
                 <a href="" class="post-title">
@@ -190,9 +193,11 @@ if(isset($_POST["cari"])) {
                 </a>
                 <span class="post-date">09 Februari 2023</span>
                 <p class="post-description">Ternyata ada 7 desa di Kabupaten Cirebon, Jawa Barat yang memiliki nama sangat unik dan beda dari yang lain. Bagaimana tidak, desa di Kabupaten Cirebon ini memiliki nama yang unik. Bahkan ada yang menyerupai nama perabotan dapur.</p>
+                </a>
             </div>
             <!-- post box 2 -->
             <div class="post-box">
+                <a href="">
                 <img src="images/artikel2.png" alt="" class="post-img">
                 <h2 class="category">Artikel</h2>
                 <a href="" class="post-title">
@@ -200,9 +205,11 @@ if(isset($_POST["cari"])) {
                 </a>
                 <span class="post-date">15 Mei 2023</span>
                 <p class="post-description"> Selamat datang di artikel ini yang akan membahas mengenai 10 SMA terbaik di Kabupaten Cirebon yang dapat dijadikan referensi bagi siswa SMP yang akan mempersiapkan diri untuk penerimaan peserta didik baru atau PPDB.</p>
+                </a>
             </div>
             <!-- post box 3 -->
             <div class="post-box">
+                <a href="">
                 <img src="images/artikel3.png" alt="" class="post-img">
                 <h2 class="category">Artikel</h2>
                 <a href="" class="post-title">
@@ -210,6 +217,7 @@ if(isset($_POST["cari"])) {
                 </a>
                 <span class="post-date">16 Mei 2023</span>
                 <p class="post-description">siapa yang tidak kenal dengan kabupaten Cirebon, pastinya daerah ini sudah tak asing lagi. Cirebon sering dijuluki sebagai kota udang karena lokasinya yang sangat berdekatan dengan laut.</p>
+                </a>
             </div>
     </section>
 </div>
