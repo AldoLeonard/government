@@ -40,10 +40,10 @@ if (isset($_POST["register"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="images/login.svg">
+    <link rel="shortcut icon" type="x-icon" href="../images/logo1.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Sign Up</title>
+    <title>Masuk & Daftar</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -73,13 +73,13 @@ if (isset($_POST["register"])) {
                     </div>
 
                     <div class="input-field button">
-                        <input type="submit" name="login" value="Login">
+                        <input type="submit" name="login" value="Masuk">
                     </div>
                 </form>
 
                 <div class="login-signup">
-                    <span class="text">Not a member?
-                        <a href="#" class="text signup-link">Signup Now</a>
+                    <span class="text">Belum Memiliki Akun?
+                        <a href="#" class="text signup-link">Daftar Sekarang</a>
                     </span>
                 </div>
             </div>
@@ -105,13 +105,13 @@ if (isset($_POST["register"])) {
 
 
                     <div class="input-field button">
-                        <input type="submit"  name="register" value="Register">
+                        <input type="submit"  name="register" value="Daftar">
                     </div>
                 </form>
 
                 <div class="login-signup">
-                    <span class="text">Already a member?
-                        <a href="#" class="text login-link">Login Now</a>
+                    <span class="text">Sudah Memiliki Akun?
+                        <a href="#" class="text login-link">Masuk</a>
                     </span>
                 </div>
             </div>
