@@ -2,22 +2,13 @@
 require ("functions.php");
  if( isset($_POST["submit"]))   {
 
-    
-
-    if(tambahb($_POST) > 0) {
-        echo "
-        <script>
-        alert('Data Berhasil Ditambahkan!');
-         document.location.href = 'berita.php';
-         </script>
-        ";
+    if (tambahb($_POST) > 0) {
+        $success = true;
     } else {
-        echo "<script>
-        alert('Data Gagal Ditambahkan!');
-        document.location.href = 'berita.php';
-        </script>";
+        $error = true;
     }
- }
+}
+
 
 ?>
 
@@ -25,11 +16,12 @@ require ("functions.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
+    <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Berita</title>
     <link rel="stylesheet" href="tambah.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 </head>
 <body>
         <div class="heading">
@@ -59,7 +51,6 @@ require ("functions.php");
         </div>
         </div>
 
-
         <!-- baris isi -->
         <div class="nama-btn full">
             <label for="isi_berita">Isi Berita</label>
@@ -77,7 +68,7 @@ require ("functions.php");
         </div>
         </form>
             </div>
-
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
                 function previewImage(event) {
                     const image = document.getElementById('preview');
@@ -85,6 +76,31 @@ require ("functions.php");
                     image.onload = () => URL.revokeObjectURL(image.src);
                 }
 
+            <?php if (isset($success)): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Data berhasil ditambahkan!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'berita.php';
+            });
+            <?php elseif (isset($error)): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Data gagal ditambahkan!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'berita.php';
+            });
+            <?php endif; ?>
             </script>
 </body>
 </html>
