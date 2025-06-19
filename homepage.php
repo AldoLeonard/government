@@ -1,7 +1,8 @@
 <?php
 require("functions.php");
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
-$berita = query("SELECT * FROM berita ORDER BY id ASC");
+$berita = query("SELECT * FROM berita ORDER BY tanggal DESC LIMIT 9");
+$berita_populer = query("SELECT * FROM berita ORDER BY views DESC LIMIT 5");
 
 if(isset($_POST["cari"])) {
     $berita = cary($_POST["keyword"]);
@@ -94,12 +95,12 @@ if(isset($_POST["cari"])) {
                  <?php foreach( $berita as $row) : ?>
                     <!-- post box 1 -->
                     <div class="post-box">
-                        <a href="">
+                        <a href="detail.php?id=<?= $row['id']; ?>">
                         <img src="../government/dashboard/data berita/images/<?php echo $row['gambar']; ?>" alt="" width="100%" height="150px">
                         <h2 class="category"><?= $row['kategori']; ?></h2>
-                        <a href="" class="post-title">
+                        <div class="post-title">
                         <?= $row['judul']; ?>
-                        </a>
+                        </div>
                         <span class="post-date"><?= $row['tanggal']; ?></span>
                         <p class="post-description"><?= $row['deskripsi']; ?></p>
                         </a>
@@ -126,21 +127,13 @@ if(isset($_POST["cari"])) {
                         <h1>BERITA POPULER</h1>
                     </div>
                     <div class="twibbon-card">
-                        <div class="text-populer">
-                            <h3>Rotasi Mutasi Pejabat di Pemkab Cirebon, Bupati Imron Geser 177 Pejabat, 92 Promosi, Oktober Ada Lagi</h3>
+                        <?php foreach($berita_populer as $pop): ?>
+                            <div class="text-populer">
+                            <a href="detail.php?id=<?= $pop['id']; ?>">
+                                <?= substr($pop['judul'], 0, 60); ?>
+                            </a>
                         </div>
-                        <div class="text-populer">
-                            <h3>Bupati Lantik 468 Pejabat Fungsional di Pemkab Cirebon, Paling Banyak Dilantik dari Kalangan Guru</h3>
-                        </div>
-                        <div class="text-populer">
-                            <h3>Mutasi Pemkab Cirebon, Ada ASN Baru 8 Bulan Jadi Sekdis Digeser, Bupati: Pertimbangan Baperjakat</h3>
-                        </div>
-                        <div class="text-populer">
-                            <h3>Jelang Idul Adha, Ratusan Ternak di Kab Cirebon Terjangkit Lato-lato, Paling Banyak di Kecamatan Ini</h3>
-                        </div>
-                        <div class="text-populer">
-                            <h3>400 Ekor Hewan Terinfeksi LSD, Kabupaten Cirebon Masih Tunggu Kiriman Vaksin</h3>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="pattern-2">

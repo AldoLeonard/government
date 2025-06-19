@@ -55,6 +55,11 @@ $brt = query("SELECT * FROM berita WHERE id = $id")[0];
                 <label for="deskripsi">Deskripsi</label>
                 <input type="text" name="deskripsi" id="deskripsi" require value="<?= $brt["deskripsi"]; ?> ">
             </li>
+            <li class="nama-btn">
+                <label for="isi_berita">Isi Berita</label>
+                <input type="isi_berita" name="isi_berita" id="isi_berita" require value="<?= $brt["isi_berita"]; ?> ">
+                <!-- <textarea name="isi_berita" id="isi_berita" rows="10" required></textarea> -->
+            </li>
             <li class="upload-btn">
             <div class="gambar-lama">
                 <img src="images/<?= $brt['gambar']; ?>" alt="">

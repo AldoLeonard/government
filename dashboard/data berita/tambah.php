@@ -32,7 +32,7 @@ require ("functions.php");
 </head>
 <body>
     <div class="heading">
-    <h1>Tambah Data Galeri</h1>
+    <h1>Tambah Data Berita</h1>
     </div>
     <div>
     <form action="" method="post" enctype="multipart/form-data">
@@ -52,6 +52,10 @@ require ("functions.php");
         <li class="nama-btn">
                 <label for="deskripsi">Deskripsi</label>
                 <input type="text" name="deskripsi" id="deskripsi" require>
+            </li>
+        <li class="nama-btn">
+                <label for="isi_berita">Isi Berita</label>
+                <textarea name="isi_berita" id="isi_berita" rows="10" required></textarea>
             </li>
             <li class="upload-btn">
                 <label for="gambar">Upload Gambar</label>

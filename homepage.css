@@ -359,6 +359,7 @@ input[type="checkbox"]{
 .profil-btn:hover {
     background: #3f9565;
     color: #fff;
+      transition: all 0.3s ease;
 }
 
 .profil-content {
@@ -489,7 +490,7 @@ input[type="checkbox"]{
   padding: 15px;
   border-radius: 0.5rem;
   position: relative;
-    transition: transform .2s;
+  transition: all 0.3s ease;
 }
 
 .post-box:hover {
@@ -527,9 +528,11 @@ input[type="checkbox"]{
   text-transform: uppercase;
   font-weight: 400;
   margin-top: 4px;
+  color: #000;
 }
 
 .post-description {
+  color: #000;
   font-size: 0.9rem;
   line-height: 1.5rem;
   margin: 5px 0 10px 0;
@@ -654,7 +657,8 @@ input[type="checkbox"]{
   margin-bottom: 30px;
 }
 
-.text-populer h3 {
+.text-populer a {
+  color: #000;
   font-size: 0.9rem;
   font-weight: 400;
   margin: 5px 0 10px 0;
@@ -667,8 +671,9 @@ input[type="checkbox"]{
 }
 
 
-.text-populer h3:hover {
+.text-populer a:hover {
   color: #5CDB95;
+    transition: all 0.3s ease;
 }
 
 .pariwisata {

@@ -75,21 +75,23 @@ if(isset($_POST["cari"])) {
     <form action="" method="post">
     <div class="search-box">
             <i class="bx bx-search"></i>
-            <input type="text" name="keyword" autofocus  placeholder="Cari Galeri..."
+            <input type="text" name="keyword" autofocus  placeholder="Cari Berita..."
             autocomplete="off">
             <button type="submit" name="cari"></button>
         </div>
     </form>
-    <div class="table-responsive">
+    <div class="table_responsive">
     <table>
         <thead>
         <tr>
-            <th>Nomer</th>
+            <th>No</th>
             <th>Kategori</th>
             <th>Judul</th>
             <th>Tanggal</th>
             <th>Deskripsi</th>
+            <th>Isi Berita</th>
             <th>Gambar</th>
+            <th>Views</th>
             <th>Aksi</th>
         </tr>
         <?php $i=1;  ?>
@@ -97,25 +99,24 @@ if(isset($_POST["cari"])) {
             </thead>
             <tbody>
         <tr>
-            <div class="table-text">
-            <td class="text"><?= $i; ?></td>
-            <td class="text"><?= $row['kategori']; ?></td>
-            <td class="text"><?= $row['judul']; ?></td>
-            <td class="text"><?= $row['tanggal']; ?></td>
-            <td class="text"><?= $row['deskripsi']; ?></td>
-            <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" width="300px"></td>
-            <td>
-            <span class="action_btn">
-                <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
-                <a href="hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin?');">Hapus</a>
-                </span>
-            </td>
-            </div>
-        </tr>
+          <td class="text"><?= $i; ?></td>
+          <td class="text"><?= $row['kategori']; ?></td>
+          <td class="text"><?= $row['judul']; ?></td>
+          <td class="text"><?= $row['tanggal']; ?></td>
+          <td class="text"><?= $row['deskripsi']; ?></td>
+          <td class="text"><?= $row['isi_berita']; ?></td>
+          <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" width="300px"></td>
+          <td><?= $row['views']; ?></td>
+          <td>
+              <span class="action_btn">
+                  <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
+                  <a href="hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin?');">Hapus</a>
+              </span>
+          </td>
+      </tr>
         <?php $i++;  ?>
         <?php endforeach; ?>
         </tbody>
-        
     </table>
     </div>
     </div>

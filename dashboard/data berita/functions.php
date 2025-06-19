@@ -33,13 +33,14 @@ function tambahb($data) {
     $judul =htmlspecialchars($data["judul"]) ;
     $tanggal =htmlspecialchars($data["tanggal"]) ;
     $deskripsi =htmlspecialchars($data["deskripsi"]) ;
+    $isi =htmlspecialchars($data["isi_berita"]) ;
     //upload gambar
     $gambar = upload();
     if( !$gambar) {
         return false;
     }
 
-    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$gambar')";
+    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
@@ -131,33 +132,33 @@ function ubah($data) {
 function uvah($data) {
     global $conn;
     $id = $data["id"];
-    $kategori =htmlspecialchars($data["kategori"]) ;
-    $judul =htmlspecialchars($data["judul"]) ;
-    $tanggal =htmlspecialchars($data["tanggal"]) ;
-    $deskripsi =htmlspecialchars($data["deskripsi"]) ;
-    $gambarLama = htmlspecialchars($data["gambarLama"]) ;
+    $kategori = htmlspecialchars($data["kategori"]);
+    $judul = htmlspecialchars($data["judul"]);
+    $tanggal = htmlspecialchars($data["tanggal"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $isi = htmlspecialchars($data["isi_berita"]);
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
 
-    //cek apakah user pilih gambar baru atau tidak
-    if($_FILES['gambar']['error'] === 4) {
+    // cek apakah user pilih gambar baru atau tidak
+    if ($_FILES['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
         $gambar = upload();
     }
-
-    $gambar = htmlspecialchars($data["gambar"]);
 
     $query = "UPDATE berita SET
                 kategori = '$kategori',
                 judul = '$judul',
                 tanggal = '$tanggal',
                 deskripsi = '$deskripsi',
+                isi_berita = '$isi',
                 gambar = '$gambar'
-                WHERE id = $id
-                ";
+              WHERE id = $id";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
 }
+
 
 function cari($keyword) {
     $query = "SELECT * FROM galeri 
