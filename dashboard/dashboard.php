@@ -22,7 +22,7 @@ if(isset($_POST["cari"])) {
 <body>
   <div class="sidebar close">
     <div class="logo-details">
-      <span class="logo_name">Government</span>
+      <span class="logo_name">Kab Cirebon</span>
     </div>
     <ul class="nav-links">
       <li>
@@ -50,41 +50,15 @@ if(isset($_POST["cari"])) {
         </ul>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-pie-chart-alt-2' ></i>
-          <span class="link_name">Analytics</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Analytics</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Chart</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Chart</a></li>
-        </ul>
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="link_name">Setting</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
-        </ul>
-      </li>
-      <li>
     <div class="profile-details">
       <div class="profile-content">
-        <img src="images/pani.png" alt="profileImg">
+        <img src="../images/pani.png" alt="profileImg">
       </div>
       <div class="name-job">
         <div class="profile_name">Aldo Leonard</div>
         <div class="job">ADMIN</div>
       </div>
-      <a href="../homepage.php"><i class='bx bx-log-out'></i></a>
+      <a href="../homepage.php"><i class='bx bx-log-out color: black;'></i></a>
     </div>
   </li>
 </ul>

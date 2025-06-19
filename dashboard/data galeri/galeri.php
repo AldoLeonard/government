@@ -25,7 +25,7 @@ if(isset($_POST["cari"])) {
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
+        <a href="../dashboard.php">
           <i class='bx bx-grid-alt' ></i>
           <span class="link_name">Dashboard</span>
         </a>
@@ -49,35 +49,9 @@ if(isset($_POST["cari"])) {
         </ul>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-pie-chart-alt-2' ></i>
-          <span class="link_name">Analytics</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Analytics</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Chart</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Chart</a></li>
-        </ul>
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="link_name">Setting</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
-        </ul>
-      </li>
-      <li>
     <div class="profile-details">
       <div class="profile-content">
-        <img src="images/pani.png" alt="profileImg">
+        <img src="../../images/pani.png" alt="profileImg">
       </div>
       <div class="name-job">
         <div class="profile_name">Aldo Leonard</div>
@@ -125,7 +99,7 @@ if(isset($_POST["cari"])) {
             <div class="table-text">
             <td class="text"><?= $i; ?></td>
             <td class="text"><?= $row['nama']; ?></td>
-            <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" ></td>
+            <td class="image"><img src="images/?php echo $row['gambar']; ?>" alt="" ></td>
             <td>
                 <span class="action_btn">
                 <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
