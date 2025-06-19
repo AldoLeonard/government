@@ -6,18 +6,13 @@ $brt = query("SELECT * FROM berita WHERE id = $id")[0];
 
  if( isset($_POST["submit"]))   {
 
-    if (isset($_POST["submit"])) {
     if (uvah($_POST, $_FILES) > 0) {
-        // refresh data terbaru
+        $success = true;
         $brt = query("SELECT * FROM berita WHERE id = $id")[0];
-        echo "<script>alert('Data berhasil diubah!');
-        document.location.href = 'berita.php';</script>";
     } else {
-        echo "<script>alert('Data gagal diubah!');
-        document.location.href = 'berita.php';</script>";
+        $error = true;
     }
 }
- }
 
 ?>
 
@@ -52,28 +47,22 @@ $brt = query("SELECT * FROM berita WHERE id = $id")[0];
         <div class="form-row">
         <div class="nama-btn">
             <label for="judul">Judul</label>
-            <textarea name="judul" id="judul" rows="3" style=" border: 1px solid #000; border-radius: 5px; padding: 10px;">
-            <?= $brt["judul"]; ?>
-            </textarea>
+            <textarea name="judul" id="judul" rows="3" style=" border: 1px solid #000; border-radius: 5px; padding: 10px;"><?= $brt["judul"]; ?></textarea>
         </div>
         <div class="nama-btn">
             <label for="deskripsi">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" rows="3" style=" border: 1px solid #000; border-radius: 5px; padding: 10px;" required>
-            <?= $brt["deskripsi"]; ?>
-            </textarea>
+            <textarea name="deskripsi" id="deskripsi" rows="3" style=" border: 1px solid #000; border-radius: 5px; padding: 10px;" required><?= $brt["deskripsi"]; ?></textarea>
         </div>
         </div>
 
         <!-- baris isi -->
         <div class="nama-btn full">
             <label for="isi_berita">Isi Berita</label>
-            <textarea name="isi_berita" id="isi_berita" rows="5" style="width: 300px; border: 1px solid #000; border-radius: 5px; padding: 10px;" required>
-            <?= $brt["isi_berita"]; ?>
-            </textarea>
+            <textarea name="isi_berita" id="isi_berita" rows="5" style="width: 300px; border: 1px solid #000; border-radius: 5px; padding: 10px;" required><?= $brt["isi_berita"]; ?></textarea>
         </div>
 
             <div class="upload-btn full center">
-            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)" required>
+            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)">
             <img id="preview" src="images/<?= $brt['gambar']; ?>" style="max-width:200px; margin-top: 10px; margin-bottom:10px;">
             <label for="gambar">Ubah Gambar</label>
             </div>
@@ -82,13 +71,38 @@ $brt = query("SELECT * FROM berita WHERE id = $id")[0];
                 <button type="submit" name="submit">Ubah Data</button>
             </div>
     </form>
-
-    <script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
                 function previewImage(event) {
                     const image = document.getElementById('preview');
                     image.src = URL.createObjectURL(event.target.files[0]);
                     image.onload = () => URL.revokeObjectURL(image.src);
                 }
+            <?php if (isset($success)): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Data berhasil diubah!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'berita.php';
+            });
+            <?php elseif (isset($error)): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Data gagal diubah!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'berita.php';
+            });
+            <?php endif; ?>
 
             </script>
     
