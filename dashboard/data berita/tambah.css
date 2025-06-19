@@ -95,6 +95,7 @@
     width: 300px;
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
   }
 
   .upload-btn label:hover {
@@ -117,6 +118,7 @@
     cursor: pointer;
     width: 300px;
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
   }
 
   .submit-btn button:hover {

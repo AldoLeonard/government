@@ -40,7 +40,7 @@ function tambahb($data) {
         return false;
     }
 
-    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar')";
+    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', null)";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
@@ -129,7 +129,7 @@ function ubah($data) {
 
     return mysqli_affected_rows($conn);
 }
-function uvah($data) {
+function uvah($data, $files) {
     global $conn;
     $id = $data["id"];
     $kategori = htmlspecialchars($data["kategori"]);
@@ -139,11 +139,18 @@ function uvah($data) {
     $isi = htmlspecialchars($data["isi_berita"]);
     $gambarLama = htmlspecialchars($data["gambarLama"]);
 
-    // cek apakah user pilih gambar baru atau tidak
-    if ($_FILES['gambar']['error'] === 4) {
+    // cek apakah user upload gambar baru
+    if ($files['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
         $gambar = upload();
+        if (!$gambar) {
+            return false; // Gagal upload
+        }
+        // Hapus gambar lama
+        if (file_exists("images/" . $gambarLama) && $gambarLama != ".jpg") {
+            unlink("images/" . $gambarLama);
+        }
     }
 
     $query = "UPDATE berita SET
@@ -158,6 +165,8 @@ function uvah($data) {
 
     return mysqli_affected_rows($conn);
 }
+
+
 
 
 function cari($keyword) {

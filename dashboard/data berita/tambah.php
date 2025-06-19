@@ -25,6 +25,7 @@ require ("functions.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+        <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Berita</title>
     <link rel="stylesheet" href="tambah.css">
@@ -43,12 +44,9 @@ require ("functions.php");
         </div>
         <div class="nama-btn">
             <label for="tanggal">Tanggal</label>
-            <input type="date" name="tanggal" id="tanggal" required>
+            <input type="text" name="tanggal" id="tanggal" required>
         </div>
-        
         </div>
-
-
         <!-- baris 2 -->
          <div class="form-row">
         <div class="nama-btn">
@@ -69,10 +67,9 @@ require ("functions.php");
         </div>
 
         <div class="upload-btn full center">
+            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)" required>
             <img id="preview" style="max-width:200px; margin-top: 10px; margin-bottom:10px;">
             <label for="gambar">Upload Gambar</label>
-            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)" required>
-            
         </div>
 
         <div class="submit-btn center">
