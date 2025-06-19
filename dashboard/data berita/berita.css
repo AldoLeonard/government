@@ -439,3 +439,36 @@ td:nth-child(5) {
     white-space: normal;       
     word-break: break-word;
 }
+
+.my-confirm-button {
+    background-color: red;
+    color: white ;
+    border-radius: 30px ;
+    padding: 8px 20px ;
+    font-weight: bold;
+    border: none;
+}
+
+.my-confirm-button:hover {
+  background-color: rgb(206, 0, 0);
+}
+
+.my-cancel-button {
+    background-color: #90a4ae ;
+    color: white ;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+    margin-right: 10px;
+}
+
+.my-ok-button {
+    background-color: blue ;
+    color: white ;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+}
+
