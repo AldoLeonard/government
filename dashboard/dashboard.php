@@ -9,84 +9,54 @@ if(isset($_POST["cari"])) {
 ?>
 
 <!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <!-- Boxiocns CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="x-icon" href="../images/logo1.png">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
   <div class="sidebar close">
-    <div class="logo-details">
-      <span class="logo_name">Kab Cirebon</span>
-    </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
-          <i class='bx bx-grid-alt' ></i>
-          <span class="link_name">Dashboard</span>
-        </a>
+        <a href="#"><i class='bx bx-grid-alt'></i></a>
         <ul class="sub-menu blank">
           <li><a class="link_name" href="#">Dashboard</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-collection' ></i>
-            <span class="link_name">Update</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <a href="#"><i class='bx bx-collection'></i></a>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Update</a></li>
           <li><a href="data berita/berita.php">Berita</a></li>
           <li><a href="#">Artikel</a></li>
           <li><a href="data galeri/galeri.php">Galeri</a></li>
         </ul>
       </li>
-      <li>
-    <div class="profile-details">
-      <div class="profile-content">
-        <img src="../images/pani.png" alt="profileImg">
-      </div>
-      <div class="name-job">
-        <div class="profile_name">Aldo Leonard</div>
-        <div class="job">ADMIN</div>
-      </div>
-      <a href="../homepage.php"><i class='bx bx-log-out color: black;'></i></a>
-    </div>
-  </li>
-</ul>
+
+      <!-- <li class="profile">
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="../images/pani.png" alt="profileImg">
+          </div>
+        </div>
+        <ul class="profile-sub">
+          <li class="name">Aldo Leonard</li>
+          <li class="job">Admin</li>
+          <li><a href="../homepage.php">Logout</a></li>
+        </ul>
+      </li> -->
+    </ul>
   </div>
+
   <section class="home-section">
     <div class="home-content">
-      <i class='bx bx-menu' ></i>
       <span class="text"><h1>Dashboard</h1></span>
     </div>
-  
-    </div>
   </section>
- 
-  <script src="script.js"></script>
-  <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
-  </script>
 </body>
 </html>

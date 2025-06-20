@@ -29,14 +29,10 @@ if(isset($_POST["cari"])) {
    </head>
 <body>
   <div class="sidebar close">
-    <div class="logo-details">
-      <span class="logo_name">Government</span>
-    </div>
     <ul class="nav-links">
       <li>
         <a href="../dashboard.php">
           <i class='bx bx-grid-alt' ></i>
-          <span class="link_name">Dashboard</span>
         </a>
         <ul class="sub-menu blank">
           <li><a class="link_name" href="../dashboard.php">Dashboard</a></li>
@@ -46,19 +42,16 @@ if(isset($_POST["cari"])) {
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Update</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Update</a></li>
           <li><a href="../data berita/berita.php">Berita</a></li>
           <li><a href="#">Artikel</a></li>
           <li><a href="galeri.php">Galeri</a></li>
         </ul>
       </li>
       <li>
-    <div class="profile-details">
+    <!-- <div class="profile-details">
       <div class="profile-content">
         <img src="../../images/pani.png" alt="profileImg">
       </div>
@@ -67,13 +60,12 @@ if(isset($_POST["cari"])) {
         <div class="job">ADMIN</div>
       </div>
       <a href="../../homepage.php"><i class='bx bx-log-out'></i></a>
-    </div>
+    </div> -->
   </li>
 </ul>
   </div>
   <section class="home-section">
     <div class="home-content">
-      <i class='bx bx-menu' ></i>
       <span class="text"><h1>Daftar Galeri</h1></span>
     </div>
     <div class="galeri-container">
@@ -130,19 +122,6 @@ if(isset($_POST["cari"])) {
  
   <script src="script.js"></script>
   <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("close");
-  });
   function konfirmasiHapus(id) {
     Swal.fire({
       title: 'Yakin ingin Menghapus?',

@@ -24,30 +24,9 @@ body {
 .sidebar.close{
   width: 78px;
 }
-.sidebar .logo-details{
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-.sidebar .logo-details .logo_name{
-  font-size: 30px;
-  color: #fff;
-  font-weight: 600;
-  transition: 0.3s ease;
-  transition-delay: 0.1s;
-  margin-left: 30px;
-  text-transform: uppercase;
-}
-.sidebar.close .logo-details .logo_name{
-  transition-delay: 0s;
-  opacity: 0;
-  pointer-events: none;
-}
 .sidebar .nav-links{
   height: 100%;
-  padding: 30px 0 150px 0;
+  padding: 50px 0 150px 0;
   overflow: auto;
 }
 .sidebar.close .nav-links{
@@ -62,7 +41,7 @@ body {
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #000;
+  color: #5CDB95;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -82,6 +61,10 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+.sidebar .nav-links li i:hover {
+  background-color: #fff;
+  color: #5CDB95;
+}
 .sidebar .nav-links li.showMenu i.arrow{
   transform: rotate(-180deg);
 }
@@ -94,10 +77,10 @@ body {
   text-decoration: none;
 }
 .sidebar .nav-links li a .link_name{
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   color: #fff;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 .sidebar.close .nav-links li a .link_name{
   opacity: 0;
@@ -108,20 +91,18 @@ body {
   margin-top: -10px;
   background: #fff;
   display: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.sidebar .nav-links li.showMenu .sub-menu{
-  display: block;
-}
+
 .sidebar .nav-links li .sub-menu a{
   color: #000;
   font-size: 15px;
   padding: 5px 0;
   white-space: nowrap;
-  opacity: 0.6;
   transition: all 0.3s ease;
 }
 .sidebar .nav-links li .sub-menu a:hover{
-  opacity: 1;
+  color: #5CDB95;
 }
 .sidebar.close .nav-links li .sub-menu{
   position: absolute;
@@ -141,73 +122,12 @@ body {
   pointer-events: auto;
   transition: all 0.4s ease;
 }
-.sidebar .nav-links li .sub-menu .link_name{
-  display: none;
-}
 .sidebar.close .nav-links li .sub-menu .link_name{
-  font-size: 18px;
+  font-size: 15px;
   opacity: 1;
   display: block;
 }
-.sidebar .nav-links li .sub-menu.blank{
-  opacity: 1;
-  pointer-events: auto;
-  padding: 3px 20px 6px 16px;
-  opacity: 0;
-  pointer-events: none;
-}
-.sidebar .nav-links li:hover .sub-menu.blank{
-  top: 50%;
-  transform: translateY(-50%);
-}
-.sidebar .profile-details{
-  position: fixed;
-  bottom: 0;
-  width: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #3f9565;
-  padding: 12px 0;
-  transition: all 0.5s ease;
-}
-.sidebar.close .profile-details{
-  background: none;
-}
-.sidebar.close .profile-details{
-  width: 78px;
-}
-.sidebar .profile-details .profile-content{
-  display: flex;
-  align-items: center;
-}
-.sidebar .profile-details img{
-  height: 52px;
-  width: 52px;
-  object-fit: cover;
-  border-radius: 16px;
-  margin: 0 14px 0 12px;
-  background: #1d1b31;
-  transition: all 0.5s ease;
-}
-.sidebar.close .profile-details img{
-  padding: 10px;
-}
-.sidebar .profile-details .profile_name,
-.sidebar .profile-details .job{
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.sidebar.close .profile-details i,
-.sidebar.close .profile-details .profile_name,
-.sidebar.close .profile-details .job{
-  display: none;
-}
-.sidebar .profile-details .job{
-  font-size: 12px;
-}
+
 .home-section{
   position: relative;
   background: rgb(247, 250, 255);
@@ -338,9 +258,9 @@ table>tbody>tr>td>img {
 
  .text {
     font-size: 20px;
-    text-transform: uppercase;
     text-align: center;
     font-weight: 600;
+    margin-left: 30px;
 }
 
 .action_btn {
@@ -403,3 +323,5 @@ table>tbody>tr:nth-child(even) {
     left: 0;
   }
 }
+
+
