@@ -27,8 +27,9 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <divnk rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubah Data</title>
+    <title>Ubah Data Galeri</title>
     <link rel="stylesheet" href="ubah.css">
 </head>
 <body>
@@ -38,24 +39,29 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
     <form action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $glr["id"];?>">
         <input type="hidden" name="gambarLama" value="<?= $glr["gambar"]; ?> ">
-        <ul>
-            <li class="nama-btn">
+        <div>
+            <div class="nama-btn">
                 <label for="nama">Nama</label>
-                <input type="text" name="nama" id="nama" require value="<?= $glr["nama"]; ?> ">
-            </li>
-            <li class="upload-btn">
-            <div class="gambar-lama">
-                <img src="images/<?= $glr["gambar"]; ?>" alt="">
-                
-                <label for="gambar">UBAH GAMBAR</label>
-                <input type="file" name="gambar" id="gambar">
-                </div>
-            </li>
-            <li class="submit-btn">
-                <button type="submit" name="submit">Ubah Data!</button>
-            </li>
-        </ul>
+                <input type="text" name="nama" id="nama" required value="<?= $glr["nama"]; ?>">
+            </div>
+            <div class="upload-btn full center">
+                <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)">
+                <img id="preview" src="images/<?= $glr['gambar']; ?>" style="max-width:200px; margin-top: 10px; margin-bottom:10px;">
+                <label for="gambar">Ubah Gambar</label>
+            </div>
+
+            <div class="submit-btn center">
+                <button type="submit" name="submit">Ubah Data</button>
+            </div>
+        </div>
     </form> 
-    
+
+    <script>
+            function previewImage(event) {
+                const image = document.getElementById('preview');
+                image.src = URL.createObjectURL(event.target.files[0]);
+                image.onload = () => URL.revokeObjectURL(image.src);
+            }
+    </script>
 </body>
 </html>
