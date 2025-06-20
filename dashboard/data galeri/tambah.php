@@ -25,8 +25,9 @@ require ("functions.php");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tambah Data Galeri</title>
     <link rel="stylesheet" href="tambah.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
@@ -36,23 +37,28 @@ require ("functions.php");
     </div>
     <div>
     <form action="" method="post" enctype="multipart/form-data">
-        <ul class="box">
-            <li class="nama-btn">
+        <div class="form-row">
+            <div class="nama-btn">
                 <label for="nama">Nama</label>
-                <input type="text" name="nama" id="nama" require>
-            </li>
-            <li class="upload-btn">
+                <input type="text" name="nama" id="nama" required>
+            </div>
+            <div class="upload-btn full center">
+                <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)" required>
+                <img id="preview" style="max-width:200px; margin-top: 10px; margin-bottom:10px;">
                 <label for="gambar">Upload Gambar</label>
-                <input type="file" name="gambar" id="gambar" require>
-            </li>
-            <li class="submit-btn">
-                <button type="submit" name="submit">Tambah Data!</button>
-            </li>
-        </ul>
-        
-
+            </div>
+            <div class="submit-btn center">
+                <button type="submit" name="submit">Tambah Data</button>
+            </div>
+        </div>  
     </form>
     </div>
-   
+   <script>
+        function previewImage(event) {
+            const image = document.getElementById('preview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.onload = () => URL.revokeObjectURL(image.src);
+        }
+   </script>
 </body>
 </html>
