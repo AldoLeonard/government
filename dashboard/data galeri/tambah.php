@@ -2,22 +2,12 @@
 require ("functions.php");
  if( isset($_POST["submit"]))   {
 
-    
-
-    if(tambah($_POST) > 0) {
-        echo "
-        <script>
-        alert('Data Berhasil Ditambahkan!');
-         document.location.href = '../data galeri/galeri.php';
-         </script>
-        ";
+    if (tambah($_POST) > 0) {
+        $success = true;
     } else {
-        echo "<script>
-        alert('Data Gagal Ditambahkan!');
-        document.location.href = '../data galeri/galeri.php';
-        </script>";
+        $error = true;
     }
- }
+}
 
 ?>
 
@@ -53,12 +43,38 @@ require ("functions.php");
         </div>  
     </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
         function previewImage(event) {
             const image = document.getElementById('preview');
             image.src = URL.createObjectURL(event.target.files[0]);
             image.onload = () => URL.revokeObjectURL(image.src);
         }
+        <?php if (isset($success)): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Data berhasil ditambahkan!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'galeri.php';
+            });
+            <?php elseif (isset($error)): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Data gagal ditambahkan!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'galeri.php';
+            });
+            <?php endif; ?>
    </script>
 </body>
 </html>

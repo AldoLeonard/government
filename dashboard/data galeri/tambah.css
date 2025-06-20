@@ -110,3 +110,12 @@
     transition: all 0.3s ease;
     background: #3f9565;
   }
+
+    .my-ok-button {
+    background-color: blue ;
+    color: white ;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+}
