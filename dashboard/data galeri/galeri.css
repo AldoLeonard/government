@@ -255,12 +255,16 @@ body {
     display: inline-block;
     padding: 13px 20px;
     font-weight: bold;
-    border-radius: 3px;
-    transition: 0.3s ease-in-out;
-    text-transform: uppercase;  
+    border-radius: 30px;
+    transition: all 0.3s ease; 
     width: 300px; 
     height: 50px;
     text-align: center;
+}
+
+.tambah-btn a:hover {
+    background: #3f9565;
+    color: #fff;
 }
 
 
@@ -281,7 +285,7 @@ body {
     background-color: #fff;
     padding: 0 15px 0 45px;
     color: #5CDB95;
-    border-radius: 6px;
+    border-radius: 30px;
 }
 .search-box i{
     position: absolute;
@@ -314,7 +318,6 @@ table>thead {
 }
 table>thead th {
     padding: 15px;
-    text-transform: uppercase;
 }
 table th,
 table td {
@@ -336,9 +339,12 @@ table>tbody>tr>td>img {
 }
 
 
+ .text1 {
+    font-size: 20px;
+    text-align: center;
+}
  .text {
     font-size: 20px;
-    text-transform: uppercase;
     text-align: center;
     font-weight: 600;
 }
@@ -350,14 +356,13 @@ table>tbody>tr>td>img {
 }
 .action_btn>a {
     text-decoration: none;
-    color: #444;
+    color: #fff;
     background: #fff;
     display: inline-block;
     padding: 7px 20px;
     font-weight: bold;
-    border-radius: 3px;
+    border-radius: 30px;
     transition: 0.3s ease-in-out;
-    text-transform: uppercase;
 }
 .action_btn>a:nth-child(1) {
     background: yellow;

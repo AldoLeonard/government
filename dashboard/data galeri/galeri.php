@@ -45,7 +45,7 @@ if(isset($_POST["cari"])) {
           <li><a class="link_name" href="#">Update</a></li>
           <li><a href="../data berita/berita.php">Berita</a></li>
           <li><a href="#">Artikel</a></li>
-          <li><a href="#">Galeri</a></li>
+          <li><a href="galeri.php">Galeri</a></li>
         </ul>
       </li>
       <li>
@@ -65,7 +65,7 @@ if(isset($_POST["cari"])) {
   <section class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      <span class="text"><h1>Daftar galeri</h1></span>
+      <span class="text"><h1>Daftar Galeri</h1></span>
     </div>
     <div class="galeri-container">
     <div class="tambah-btn">
@@ -86,7 +86,7 @@ if(isset($_POST["cari"])) {
     <table>
         <thead>
         <tr>
-            <th>Nomer</th>
+            <th>No</th>
             <th>Nama</th>
             <th>Gambar</th>
             <th>Aksi</th>
@@ -97,9 +97,9 @@ if(isset($_POST["cari"])) {
         <tbody>
         <tr>
             <div class="table-text">
-            <td class="text"><?= $i; ?></td>
+            <td class="text1"><?= $i; ?></td>
             <td class="text"><?= $row['nama']; ?></td>
-            <td class="image"><img src="images/?php echo $row['gambar']; ?>" alt="" ></td>
+            <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" width="300px"></td>
             <td>
                 <span class="action_btn">
                 <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
