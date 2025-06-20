@@ -1,5 +1,13 @@
 <?php
 require("functions.php");
+if(isset($_GET['hapus'])) {
+  $id = $_GET['hapus'];
+  $hapusSukses = hapus($id) > 0;
+  echo "<script>
+  let hapusSukses = " . ($hapusSukses ? 'true' : 'false') . ";
+  </script>";
+}
+
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 
 //tombol cari diklik
@@ -12,7 +20,8 @@ if(isset($_POST["cari"])) {
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Dashboard</title>
+    <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
+    <title> Data Galeri</title>
     <link rel="stylesheet" href="galeri.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -103,7 +112,7 @@ if(isset($_POST["cari"])) {
             <td>
                 <span class="action_btn">
                 <a href="ubah.php?id=<?php echo $row['id']; ?>">Ubah</a> 
-                <a href="hapus.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin?');">Hapus</a>
+                <a href="#" onclick="konfirmasiHapus(<?= $row['id']; ?>); return false;">Hapus</a>
                 </span>
             </td>
             </div>
@@ -116,6 +125,8 @@ if(isset($_POST["cari"])) {
     </div>
     </div>
   </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  
   <script src="script.js"></script>
   <script>
@@ -132,6 +143,52 @@ if(isset($_POST["cari"])) {
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+  function konfirmasiHapus(id) {
+    Swal.fire({
+      title: 'Yakin ingin Menghapus?',
+      text: "Data akan hilang permanen!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Ya, hapus!',
+      cancelButtonText: 'Batal',
+      customClass: {
+        confirmButton: 'my-confirm-button',
+        cancelButton: 'my-cancel-button'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "galeri.php?hapus=" + id;
+      }
+    })
+  }
+
+  if (typeof hapusSukses !== 'undefined') {
+    if (hapusSukses) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: 'Data berhasil dihapus!',
+            confirmButtonText: 'OK',
+            customClass: {
+              confirmButton: 'my-ok-button'
+            }
+        }).then(() => {
+            window.location.href = 'galeri.php';
+        });
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal!',
+            text: 'Data gagal dihapus.',
+            confirmButtonText: 'OK',
+            customClass: {
+              confirmButtonText: 'my-ok-button'
+            }
+        }).then(() => {
+            window.location.href = 'galeri.php';
+        });
+    }
+  }
   </script>
 </body>
 </html>
