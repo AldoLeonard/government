@@ -6,20 +6,13 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
 
  if( isset($_POST["submit"]))   {
 
-    if( ubah($_POST) > 0) {
-        echo "
-        <script>
-         alert('Data Berhasil Diubah!');
-         document.location.href = 'galeri.php';
-         </script>
-        ";
+    if (ubah($_POST, $_FILES) > 0) {
+        $success = true;
+        $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
     } else {
-        echo "<script>
-        alert('Data Gagal Diubah!');
-        document.location.href = 'galeri.php';
-        </script>";
+        $error = true;
     }
- }
+}
 
 ?>
 
@@ -55,6 +48,7 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
             </div>
         </div>
     </form> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
             function previewImage(event) {
@@ -62,6 +56,31 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
                 image.src = URL.createObjectURL(event.target.files[0]);
                 image.onload = () => URL.revokeObjectURL(image.src);
             }
+            <?php if (isset($success)): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Data berhasil diubah!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'galeri.php';
+            });
+            <?php elseif (isset($error)): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Data gagal diubah!',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'my-ok-button'
+                }
+            }).then(() => {
+                window.location.href = 'galeri.php';
+            });
+            <?php endif; ?>
     </script>
 </body>
 </html>

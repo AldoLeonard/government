@@ -121,3 +121,12 @@
     object-position: center;
     width: 200px;
   }
+
+      .my-ok-button {
+    background-color: blue ;
+    color: white ;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+}
