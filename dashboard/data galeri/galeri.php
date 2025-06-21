@@ -70,7 +70,7 @@ $email = $_SESSION['user']['email'];
         <div class="profile-dropdown">
           <div class="profile-name"><?= $username; ?></div>
           <div class="profile-email"><?= $email; ?></div>
-          <div><a href="../homepage.php">Kembali</a></div>
+          <div><a href="../../homepage.php">Kembali</a></div>
         </div>
       </div>
     </ul>
