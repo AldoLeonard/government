@@ -3,13 +3,14 @@ require("../functions.php");
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 
 //tombol cari diklik
-if(isset($_POST["cari"])) {
-    $galeri = cari($_POST["keyword"]);
+if (isset($_POST["cari"])) {
+  $galeri = cari($_POST["keyword"]);
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="x-icon" href="../images/logo1.png">
@@ -18,6 +19,7 @@ if(isset($_POST["cari"])) {
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
   <div class="sidebar close">
     <ul class="nav-links">
@@ -37,7 +39,6 @@ if(isset($_POST["cari"])) {
           <li><a href="data galeri/galeri.php">Galeri</a></li>
         </ul>
       </li>
-
       <!-- <li class="profile">
         <div class="profile-details">
           <div class="profile-content">
@@ -55,8 +56,11 @@ if(isset($_POST["cari"])) {
 
   <section class="home-section">
     <div class="home-content">
-      <span class="text"><h1>Dashboard</h1></span>
+      <span class="text">
+        <h1>Dashboard</h1>
+      </span>
     </div>
   </section>
 </body>
+
 </html>

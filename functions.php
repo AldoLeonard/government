@@ -1,23 +1,25 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "tubes");
 
-function query($query) {
+function query($query)
+{
     global $conn;
     $result = mysqli_query($conn, $query);
     $rows = [];
-    while( $row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;
     }
 
     return $rows;
 }
 
-function tambah($data) {
+function tambah($data)
+{
     global $conn;
-    $nama =htmlspecialchars($data["nama"]) ;
+    $nama = htmlspecialchars($data["nama"]);
     //upload gambar
     $gambar = upload();
-    if( !$gambar) {
+    if (!$gambar) {
         return false;
     }
 
@@ -27,15 +29,16 @@ function tambah($data) {
     return mysqli_affected_rows($conn);
 }
 
-function tambahb($data) {
+function tambahb($data)
+{
     global $conn;
-    $kategori =htmlspecialchars($data["kategori"]) ;
-    $judul =htmlspecialchars($data["judul"]) ;
-    $tanggal =htmlspecialchars($data["tanggal"]) ;
-    $deskripsi =htmlspecialchars($data["deskripsi"]) ;
+    $kategori = htmlspecialchars($data["kategori"]);
+    $judul = htmlspecialchars($data["judul"]);
+    $tanggal = htmlspecialchars($data["tanggal"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
     //upload gambar
     $gambar = upload();
-    if( !$gambar) {
+    if (!$gambar) {
         return false;
     }
 
@@ -45,14 +48,15 @@ function tambahb($data) {
     return mysqli_affected_rows($conn);
 }
 
-function upload() {
+function upload()
+{
     $namaFile = $_FILES['gambar']['name'];
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
     //cek apakah tidak ada gambar yang diupload
-    if($error === 4) {
+    if ($error === 4) {
         echo "
             <script>
             alert('Pilih Gambar Dulu bero!');
@@ -64,18 +68,18 @@ function upload() {
     //cek apakah yang diupload adalah gambar
     $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
     $ekstensiGambar = explode('.', $namaFile);
-    $ekstensiGambar = strtolower (end($ekstensiGambar));
-    if(!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
         echo "
             <script>
             alert('Yang anda upload bukan gambar bero!');
             </script>
         ";
         return false;
-    } 
+    }
 
     //cek jika ukurannya terlalu besar
-    if($ukuranFile > 5000000) {
+    if ($ukuranFile > 5000000) {
         echo "
             <script>
             alert('Ukuran gambar terlalu besar bero!');
@@ -87,31 +91,34 @@ function upload() {
     //lolos pengecekan, gambar siap diupload
     //generate nama gambar baru
     $namaFileBaru = uniqid();
-    $namaFileBaru.= '.';
-    $namaFileBaru.= $ekstensiGambar;
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
     return $namaFileBaru;
 }
 
-function hapus($id) {
+function hapus($id)
+{
     global $conn;
     mysqli_query($conn, "DELETE FROM galeri WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
-function hafus($id) {
+function hafus($id)
+{
     global $conn;
     mysqli_query($conn, "DELETE FROM berita WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data) {
+function ubah($data)
+{
     global $conn;
     $id = $data["id"];
-    $nama =htmlspecialchars($data["nama"]) ;
-    $gambarLama = htmlspecialchars($data["gambarLama"]) ;
+    $nama = htmlspecialchars($data["nama"]);
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
 
     //cek apakah user pilih gambar baru atau tidak
-    if($_FILES['gambar']['error'] === 4) {
+    if ($_FILES['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
         $gambar = upload();
@@ -128,17 +135,18 @@ function ubah($data) {
 
     return mysqli_affected_rows($conn);
 }
-function uvah($data) {
+function uvah($data)
+{
     global $conn;
     $id = $data["id"];
-    $kategori =htmlspecialchars($data["kategori"]) ;
-    $judul =htmlspecialchars($data["judul"]) ;
-    $tanggal =htmlspecialchars($data["tanggal"]) ;
-    $deskripsi =htmlspecialchars($data["deskripsi"]) ;
-    $gambarLama = htmlspecialchars($data["gambarLama"]) ;
+    $kategori = htmlspecialchars($data["kategori"]);
+    $judul = htmlspecialchars($data["judul"]);
+    $tanggal = htmlspecialchars($data["tanggal"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
 
     //cek apakah user pilih gambar baru atau tidak
-    if($_FILES['gambar']['error'] === 4) {
+    if ($_FILES['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
         $gambar = upload();
@@ -159,22 +167,25 @@ function uvah($data) {
     return mysqli_affected_rows($conn);
 }
 
-function cari($keyword) {
+function cari($keyword)
+{
     $query = "SELECT * FROM galeri 
             WHERE
             nama LIKE '%$keyword%'
             ";
-     return query($query);
+    return query($query);
 }
-function cary($keyword) {
+function cary($keyword)
+{
     $query = "SELECT * FROM berita 
             WHERE
             judul LIKE '%$keyword%'
             ";
-     return query($query);
+    return query($query);
 }
 
-function registrasi($data) {
+function registrasi($data)
+{
     global $conn;
 
     $username = strtolower(stripslashes($data["username"]));
@@ -184,7 +195,7 @@ function registrasi($data) {
     //cek username udah ada tau belum
     $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
 
-    if(mysqli_fetch_assoc($result)) {
+    if (mysqli_fetch_assoc($result)) {
         echo "<script>
         alert('username sudah terdaftar');
         </script>";
@@ -199,6 +210,4 @@ function registrasi($data) {
     mysqli_query($conn, "INSERT INTO user VALUES (NULL, '$username', '$email', '$password')");
 
     return mysqli_affected_rows($conn);
-
 }
-?>

@@ -1,10 +1,10 @@
 <?php
-require ("functions.php");
+require("functions.php");
 
 $id = $_GET["id"];
 $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
 
- if( isset($_POST["submit"]))   {
+if (isset($_POST["submit"])) {
 
     if (ubah($_POST, $_FILES) > 0) {
         $success = true;
@@ -18,6 +18,7 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
@@ -25,12 +26,13 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
     <title>Ubah Data Galeri</title>
     <link rel="stylesheet" href="ubah.css">
 </head>
+
 <body>
-<div class="heading">
-    <h1>Ubah Data Galeri</h1>
+    <div class="heading">
+        <h1>Ubah Data Galeri</h1>
     </div>
     <form action="" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?= $glr["id"];?>">
+        <input type="hidden" name="id" value="<?= $glr["id"]; ?>">
         <input type="hidden" name="gambarLama" value="<?= $glr["gambar"]; ?> ">
         <div>
             <div class="nama-btn">
@@ -47,16 +49,16 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
                 <button type="submit" name="submit">Ubah Data</button>
             </div>
         </div>
-    </form> 
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-            function previewImage(event) {
-                const image = document.getElementById('preview');
-                image.src = URL.createObjectURL(event.target.files[0]);
-                image.onload = () => URL.revokeObjectURL(image.src);
-            }
-            <?php if (isset($success)): ?>
+        function previewImage(event) {
+            const image = document.getElementById('preview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.onload = () => URL.revokeObjectURL(image.src);
+        }
+        <?php if (isset($success)): ?>
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil!',
@@ -68,7 +70,7 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
             }).then(() => {
                 window.location.href = 'galeri.php';
             });
-            <?php elseif (isset($error)): ?>
+        <?php elseif (isset($error)): ?>
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal!',
@@ -80,7 +82,8 @@ $glr = query("SELECT * FROM galeri WHERE id = $id")[0];
             }).then(() => {
                 window.location.href = 'galeri.php';
             });
-            <?php endif; ?>
+        <?php endif; ?>
     </script>
 </body>
+
 </html>

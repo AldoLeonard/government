@@ -12,11 +12,13 @@ mysqli_query($conn, "UPDATE berita SET views = views + 1 WHERE id = $id");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Detail Berita</title>
   <link rel="stylesheet" href="detail.css">
 </head>
+
 <body>
   <div class="container">
     <a href="homepage.php" class="back-button">← Kembali</a>
@@ -26,4 +28,5 @@ mysqli_query($conn, "UPDATE berita SET views = views + 1 WHERE id = $id");
     <p class="isi"><?= nl2br($berita['isi_berita']); ?></p>
   </div>
 </body>
+
 </html>

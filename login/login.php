@@ -1,34 +1,34 @@
 <?php
 
-require ("../functions.php");
+require("../functions.php");
 
-if(isset($_POST["login"])) {
+if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-   $result =  mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+    $result =  mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
 
-   //cek username
-   if(mysqli_num_rows($result) === 1) {
-    //cek password
-    $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row["password"])) {
-        header("Location: ../dashboard/dashboard.php");
-        exit;
+    //cek username
+    if (mysqli_num_rows($result) === 1) {
+        //cek password
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row["password"])) {
+            header("Location: ../dashboard/dashboard.php");
+            exit;
+        }
     }
-   }
 
-   $error = true;
+    $error = true;
 }
 
 if (isset($_POST["register"])) {
-    if(registrasi($_POST) > 0 ) {
+    if (registrasi($_POST) > 0) {
         echo "
             <script>
             alert('User berhasil ditambahkan!');
             </script>
         ";
-    }  else {
+    } else {
         echo mysqli_error($conn);
     }
 }
@@ -38,6 +38,7 @@ if (isset($_POST["register"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="../images/logo1.png">
@@ -48,14 +49,15 @@ if (isset($_POST["register"])) {
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="forms">
             <div class="form login">
                 <span class="title">WELCOME BACK</span>
-                <?php if(isset($error)) : ?>
-                    <p style = "color:red; font-style: italic;"> username / password salah </p>
-                <?php endif ; ?>
+                <?php if (isset($error)) : ?>
+                    <p style="color:red; font-style: italic;"> username / password salah </p>
+                <?php endif; ?>
 
                 <form action="" method="post">
                     <div class="input-field">
@@ -63,7 +65,7 @@ if (isset($_POST["register"])) {
                         <i class='bx bxs-user icon'></i>
                     </div>
                     <div class="input-field">
-                        <input type="password"  name="password" id="password" class="password" placeholder="Password" required>
+                        <input type="password" name="password" id="password" class="password" placeholder="Password" required>
                         <i class='bx bxs-lock icon'></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -90,22 +92,22 @@ if (isset($_POST["register"])) {
 
                 <form action="" method="post">
                     <div class="input-field">
-                        <input type="text" name="username" id="username"  placeholder="Username" required>
+                        <input type="text" name="username" id="username" placeholder="Username" required>
                         <i class='bx bxs-user icon'></i>
                     </div>
                     <div class="input-field">
                         <input type="text" name="email" id="email" placeholder="Email" required>
-                        <i class='bx bxs-envelope icon' ></i>
+                        <i class='bx bxs-envelope icon'></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="password" id="password"  class="password" placeholder="Password" required>
+                        <input type="password" name="password" id="password" class="password" placeholder="Password" required>
                         <i class='bx bxs-lock icon'></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
 
 
                     <div class="input-field button">
-                        <input type="submit"  name="register" value="Daftar">
+                        <input type="submit" name="register" value="Daftar">
                     </div>
                 </form>
 
@@ -118,43 +120,43 @@ if (isset($_POST["register"])) {
         </div>
     </div>
 
-  <script>
-    const container = document.querySelector(".container"),
-      pwShowHide = document.querySelectorAll(".showHidePw"),
-      pwFields = document.querySelectorAll(".password"),
-      signUp = document.querySelector(".signup-link"),
-      login = document.querySelector(".login-link");
+    <script>
+        const container = document.querySelector(".container"),
+            pwShowHide = document.querySelectorAll(".showHidePw"),
+            pwFields = document.querySelectorAll(".password"),
+            signUp = document.querySelector(".signup-link"),
+            login = document.querySelector(".login-link");
 
-    //   js code to show/hide password and change icon
-    pwShowHide.forEach(eyeIcon =>{
-        eyeIcon.addEventListener("click", ()=>{
-            pwFields.forEach(pwField =>{
-                if(pwField.type ==="password"){
-                    pwField.type = "text";
+        //   js code to show/hide password and change icon
+        pwShowHide.forEach(eyeIcon => {
+            eyeIcon.addEventListener("click", () => {
+                pwFields.forEach(pwField => {
+                    if (pwField.type === "password") {
+                        pwField.type = "text";
 
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("uil-eye-slash", "uil-eye");
-                    })
-                }else{
-                    pwField.type = "password";
+                        pwShowHide.forEach(icon => {
+                            icon.classList.replace("uil-eye-slash", "uil-eye");
+                        })
+                    } else {
+                        pwField.type = "password";
 
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("uil-eye", "uil-eye-slash");
-                    })
-                }
-            }) 
+                        pwShowHide.forEach(icon => {
+                            icon.classList.replace("uil-eye", "uil-eye-slash");
+                        })
+                    }
+                })
+            })
         })
-    })
 
-    // js code to appear signup and login form
-    signUp.addEventListener("click", ( )=>{
-        container.classList.add("active");
-    });
-    login.addEventListener("click", ( )=>{
-        container.classList.remove("active");
-    });
-
-  </script>
+        // js code to appear signup and login form
+        signUp.addEventListener("click", () => {
+            container.classList.add("active");
+        });
+        login.addEventListener("click", () => {
+            container.classList.remove("active");
+        });
+    </script>
 
 </body>
+
 </html>
