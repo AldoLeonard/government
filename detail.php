@@ -15,7 +15,8 @@ mysqli_query($conn, "UPDATE berita SET views = views + 1 WHERE id = $id");
 
 <head>
   <meta charset="UTF-8">
-  <title>Detail Berita</title>
+  <link rel="shortcut icon" type="x-icon" href="images/logo1.png">
+  <title><?= htmlspecialchars($berita['judul']);?></title>
   <link rel="stylesheet" href="detail.css">
 </head>
 

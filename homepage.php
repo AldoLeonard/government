@@ -196,11 +196,11 @@ if (isset($_POST["cari"])) {
             <section class="post container">
                 <?php foreach ($artikel as $row): ?>
                     <div class="post-box">
-                        <a href="detail-artikel.php?id=<?= $row['id']; ?>">
+                        <a href="detail_artikel.php?id=<?= $row['id']; ?>">
                             <img src="images/<?= $row['gambar']; ?>" alt="" class="post-img">
                             <h2 class="category">Artikel</h2>
                             <a href="" class="post-title"><?= $row['judul']; ?></a>
-                            <span class="post-date"><?= date('d F Y', strtotime($row['tanggal'])); ?></span>
+                            <span class="post-date"><?= $row['tanggal']; ?></span>
                             <p class="post-description"><?= $row['deskripsi']; ?></p>
                         </a>
                     </div>

@@ -61,7 +61,7 @@ function add($data)
         return false;
     }
 
-    $query = "INSERT INTO artikel VALUES(null, '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar')";
+    $query = "INSERT INTO artikel VALUES(null, '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', null)";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
