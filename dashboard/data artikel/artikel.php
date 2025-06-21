@@ -4,16 +4,16 @@ session_start();
 
 if (isset($_GET['hapus'])) {
   $id = $_GET['hapus'];
-  $hapusSukses = hafus($id) > 0;
+  $hapusSukses = delete($id) > 0;
   echo "<script>
   let hapusSukses = " . ($hapusSukses ? 'true' : 'false') . ";
   </script>";
 }
-$berita = query("SELECT * FROM berita ORDER BY id ASC");
+$artikel= query("SELECT * FROM artikel ORDER BY id ASC");
 
 //tombol cari diklik
 if (isset($_POST["cari"])) {
-  $berita = cary($_POST["keyword"]);
+  $artikel = search($_POST["keyword"]);
 }
 
 if (!isset($_SESSION['user'])) {
@@ -33,8 +33,8 @@ $email = $_SESSION['user']['email'];
 <head>
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="x-icon" href="../../images/logo1.png">
-  <title>Data Berita</title>
-  <link rel="stylesheet" href="berita.css">
+  <title>Data Artikel</title>
+  <link rel="stylesheet" href="artikel.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -58,8 +58,8 @@ $email = $_SESSION['user']['email'];
           <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-          <li><a href="#">Berita</a></li>
-          <li><a href="../data artikel/artikel.php">Artikel</a></li>
+          <li><a href="../data berita/berita.php">Berita</a></li>
+          <li><a href="#">Artikel</a></li>
           <li><a href="../data galeri/galeri.php">Galeri</a></li>
         </ul>
       </li>
@@ -80,19 +80,19 @@ $email = $_SESSION['user']['email'];
   <section class="home-section">
     <div class="home-content">
       <span class="text">
-        <h1>Daftar Berita</h1>
+        <h1>Daftar Artikel</h1>
       </span>
     </div>
     <div class="galeri-container">
       <div class="tambah-btn">
-        <a href="tambah.php">Tambah Data Berita</a>
+        <a href="tambah.php">Tambah Data Artikel</a>
       </div>
       <br><br>
 
       <form action="" method="post">
         <div class="search-box">
           <i class="bx bx-search"></i>
-          <input type="text" name="keyword" autofocus placeholder="Cari Berita..."
+          <input type="text" name="keyword" autofocus placeholder="Cari Artikel..."
             autocomplete="off">
           <button type="submit" name="cari"></button>
         </div>
@@ -102,26 +102,24 @@ $email = $_SESSION['user']['email'];
           <thead>
             <tr>
               <th>No</th>
-              <th>Kategori</th>
               <th>Judul</th>
               <th>Tanggal</th>
               <th>Deskripsi</th>
-              <th>Isi Berita</th>
-              <th>Gambar</th>
+              <th>Isi Artikel</th>
+                <th>Gambar</th>
               <th>Views</th>
               <th>Aksi</th>
             </tr>
             <?php $i = 1;  ?>
-            <?php foreach ($berita as $row) : ?>
+            <?php foreach ($artikel as $row) : ?>
           </thead>
           <tbody>
             <tr>
               <td class="text"><?= $i; ?></td>
-              <td class="text"><?= $row['kategori']; ?></td>
               <td class="text"><?= $row['judul']; ?></td>
               <td class="text"><?= $row['tanggal']; ?></td>
               <td class="text"><?= $row['deskripsi']; ?></td>
-              <td class="text"><?= $row['isi_berita']; ?></td>
+              <td class="text"><?= $row['isi_artikel']; ?></td>
               <td class="image"><img src="images/<?php echo $row['gambar']; ?>" alt="" width="300px"></td>
               <td><?= $row['views']; ?></td>
               <td>
@@ -156,7 +154,7 @@ $email = $_SESSION['user']['email'];
         }
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = "berita.php?hapus=" + id;
+          window.location.href = "artikel.php?hapus=" + id;
         }
       })
     }
@@ -172,7 +170,7 @@ $email = $_SESSION['user']['email'];
             confirmButton: 'my-ok-button'
           }
         }).then(() => {
-          window.location.href = 'berita.php';
+          window.location.href = 'artikel.php';
         });
       } else {
         Swal.fire({
@@ -184,7 +182,7 @@ $email = $_SESSION['user']['email'];
             confirmButtonText: 'my-ok-button'
           }
         }).then(() => {
-          window.location.href = 'berita.php';
+          window.location.href = 'artikel.php';
         });
       }
     }

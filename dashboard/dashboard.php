@@ -45,7 +45,7 @@ $email = $_SESSION['user']['email'];
         </div>
         <ul class="sub-menu">
           <li><a href="data berita/berita.php">Berita</a></li>
-          <li><a href="#">Artikel</a></li>
+          <li><a href="data artikel/artikel.php">Artikel</a></li>
           <li><a href="data galeri/galeri.php">Galeri</a></li>
         </ul>
       </li>
