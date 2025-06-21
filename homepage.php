@@ -5,6 +5,8 @@ require("functions.php");
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 $berita = query("SELECT * FROM berita ORDER BY tanggal DESC LIMIT 9");
 $berita_populer = query("SELECT * FROM berita ORDER BY views DESC LIMIT 5");
+$artikel = query("SELECT * FROM artikel ORDER BY tanggal DESC LIMIT 3");
+
 
 if (isset($_POST["cari"])) {
     $berita = cary($_POST["keyword"]);
@@ -71,8 +73,6 @@ if (isset($_POST["cari"])) {
             </li>
         </ul>
     </nav>
-
-
 
 
     <section class="beranda" id="beranda">
@@ -174,8 +174,6 @@ if (isset($_POST["cari"])) {
                                 <div class="swiper-slide">
                                     <p><?= $row['nama']; ?></p><img src="../government/dashboard/data galeri/images/<?php echo $row['gambar']; ?>" alt="">
                                 </div>
-
-
                             <?php endforeach ?>
                         </div>
 
@@ -184,9 +182,7 @@ if (isset($_POST["cari"])) {
                     </div>
 
                 </div>
-
             </div>
-
         </div>
         </div>
         <div class="berita-bawah">
@@ -198,43 +194,19 @@ if (isset($_POST["cari"])) {
 
             </div>
             <section class="post container">
-                <!-- post box 1 -->
-                <div class="post-box">
-                    <a href="">
-                        <img src="images/artikel1.png" alt="" class="post-img">
-                        <h2 class="category">Artikel</h2>
-                        <a href="" class="post-title">
-                            7 Nama Desa Terunik di Kabupaten Cirebon Jawa Barat, Aneh tapi Nyata, Nomor 4 Namanya Mirip Perabotan
+                <?php foreach ($artikel as $row): ?>
+                    <div class="post-box">
+                        <a href="detail-artikel.php?id=<?= $row['id']; ?>">
+                            <img src="images/<?= $row['gambar']; ?>" alt="" class="post-img">
+                            <h2 class="category">Artikel</h2>
+                            <a href="" class="post-title"><?= $row['judul']; ?></a>
+                            <span class="post-date"><?= date('d F Y', strtotime($row['tanggal'])); ?></span>
+                            <p class="post-description"><?= $row['deskripsi']; ?></p>
                         </a>
-                        <span class="post-date">09 Februari 2023</span>
-                        <p class="post-description">Ternyata ada 7 desa di Kabupaten Cirebon, Jawa Barat yang memiliki nama sangat unik dan beda dari yang lain. Bagaimana tidak, desa di Kabupaten Cirebon ini memiliki nama yang unik. Bahkan ada yang menyerupai nama perabotan dapur.</p>
-                    </a>
-                </div>
-                <!-- post box 2 -->
-                <div class="post-box">
-                    <a href="">
-                        <img src="images/artikel2.png" alt="" class="post-img">
-                        <h2 class="category">Artikel</h2>
-                        <a href="" class="post-title">
-                            10 SMA Terbaik di Kabupaten Cirebon dengan Keunggulan yang Bermanfaat Untuk Meraih Kesuksesan Siswa!
-                        </a>
-                        <span class="post-date">15 Mei 2023</span>
-                        <p class="post-description"> Selamat datang di artikel ini yang akan membahas mengenai 10 SMA terbaik di Kabupaten Cirebon yang dapat dijadikan referensi bagi siswa SMP yang akan mempersiapkan diri untuk penerimaan peserta didik baru atau PPDB.</p>
-                    </a>
-                </div>
-                <!-- post box 3 -->
-                <div class="post-box">
-                    <a href="">
-                        <img src="images/artikel3.png" alt="" class="post-img">
-                        <h2 class="category">Artikel</h2>
-                        <a href="" class="post-title">
-                            5 Daerah Tersepi di Kabupaten Cirebon: Warga Sumber Jangan Kaget, Juaranya Bukan Karangsembung, tapi...
-                        </a>
-                        <span class="post-date">16 Mei 2023</span>
-                        <p class="post-description">siapa yang tidak kenal dengan kabupaten Cirebon, pastinya daerah ini sudah tak asing lagi. Cirebon sering dijuluki sebagai kota udang karena lokasinya yang sangat berdekatan dengan laut.</p>
-                    </a>
-                </div>
+                    </div>
+                <?php endforeach; ?>
             </section>
+
         </div>
     </section>
 
