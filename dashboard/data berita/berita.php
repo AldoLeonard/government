@@ -1,5 +1,6 @@
 <?php
 require("functions.php");
+session_start();
 
 if (isset($_GET['hapus'])) {
   $id = $_GET['hapus'];
@@ -14,6 +15,14 @@ $berita = query("SELECT * FROM berita ORDER BY id ASC");
 if (isset($_POST["cari"])) {
   $berita = cary($_POST["keyword"]);
 }
+
+if (!isset($_SESSION['user'])) {
+    header("Location: ../../login/login.php");
+    exit;
+}
+
+$username = $_SESSION['user']['username'];
+$email = $_SESSION['user']['email'];
 ?>
 
 
@@ -55,17 +64,17 @@ if (isset($_POST["cari"])) {
         </ul>
       </li>
       <li>
-        <!-- <div class="profile-details">
-      <div class="profile-content">
-        <img src="../../images/pani.png" alt="profileImg">
-      </div>
-      <div class="name-job">
-        <div class="profile_name">Aldo Leonard</div>
-        <div class="job">ADMIN</div>
-      </div>
-      <a href="../../homepage.php"><i class='bx bx-log-out'></i></a>
-    </div> -->
       </li>
+      <div class="profile-hover">
+        <div class="profile-icon">
+          <i class='bx bx-user'></i>
+        </div>
+        <div class="profile-dropdown">
+          <div class="profile-name"><?= $username; ?></div>
+          <div class="profile-email"><?= $email; ?></div>
+          <div><a href="../homepage.php">Kembali</a></div>
+        </div>
+      </div>
     </ul>
   </div>
   <section class="home-section">

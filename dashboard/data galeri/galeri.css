@@ -357,3 +357,72 @@ table>tbody>tr:nth-child(even) {
     font-weight: bold;
     border: none;
 }
+
+.profile-hover {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-icon i {
+  font-size: 26px;
+  color: #fff;
+  padding: 12px 0;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.profile-icon i:hover {
+  color: #5CDB95;
+  background: white;
+}
+
+.profile-dropdown {
+  position: absolute;
+  left: 100%; /* agar tepat keluar dari sidebar */
+  bottom: 0;
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.profile-hover:hover .profile-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* List text */
+.profile-dropdown div {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.profile-dropdown .profile-name {
+  font-weight: bold;
+}
+
+.profile-dropdown div a {
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-dropdown div a:hover {
+  color: #5CDB95;
+}
+
+/* Sidebar close */
+.sidebar.close .profile-dropdown {
+  left: 78px;
+}

@@ -1,11 +1,21 @@
 <?php
+
 require("../functions.php");
+session_start(); 
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 
 //tombol cari diklik
 if (isset($_POST["cari"])) {
   $galeri = cari($_POST["keyword"]);
 }
+
+if (!isset($_SESSION['user'])) {
+    header("Location: ../login/login.php");
+    exit;
+}
+
+$username = $_SESSION['user']['username'];
+$email = $_SESSION['user']['email'];
 ?>
 
 <!DOCTYPE html>
@@ -39,19 +49,17 @@ if (isset($_POST["cari"])) {
           <li><a href="data galeri/galeri.php">Galeri</a></li>
         </ul>
       </li>
-      <!-- <li class="profile">
-        <div class="profile-details">
-          <div class="profile-content">
-            <img src="../images/pani.png" alt="profileImg">
-          </div>
-        </div>
-        <ul class="profile-sub">
-          <li class="name">Aldo Leonard</li>
-          <li class="job">Admin</li>
-          <li><a href="../homepage.php">Logout</a></li>
-        </ul>
-      </li> -->
     </ul>
+    <div class="profile-hover">
+        <div class="profile-icon">
+          <i class='bx bx-user'></i>
+        </div>
+        <div class="profile-dropdown">
+          <div class="profile-name"><?= $username; ?></div>
+          <div class="profile-email"><?= $email; ?></div>
+          <div><a href="../homepage.php">Kembali</a></div>
+          </div>
+      </div>
   </div>
 
   <section class="home-section">

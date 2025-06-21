@@ -1,6 +1,7 @@
 <?php
 
 require("../functions.php");
+session_start();
 
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
@@ -10,9 +11,13 @@ if (isset($_POST["login"])) {
 
     //cek username
     if (mysqli_num_rows($result) === 1) {
-        //cek password
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
+           $_SESSION['user'] = [
+                'id' => $row['id'],
+                'username' => $row['username'],
+                'email' => $row['email']
+            ];
             header("Location: ../dashboard/dashboard.php");
             exit;
         }
