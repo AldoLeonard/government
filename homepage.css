@@ -1093,3 +1093,59 @@ footer {
 }
 
   }
+
+  .user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 10px;
+    transition: all 0.3s ease;
+    font-family: 'Raleway', sans-serif;
+}
+
+.user-btn:hover {
+  color: #5CDB95;
+}
+
+.user-btn i {
+  font-weight: bold;
+}
+
+.user-btn i:last-child {
+  transition: transform 0.3s;
+}
+
+.user-btn:hover i:last-child {
+  transform: rotate(180deg);
+}
+
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 175px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.dropdown-menu a {
+    color: #333;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-dropdown:hover .dropdown-menu {
+    display: block;
+}

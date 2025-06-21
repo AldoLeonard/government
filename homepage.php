@@ -1,5 +1,7 @@
 <?php
+session_start();
 require("functions.php");
+
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 $berita = query("SELECT * FROM berita ORDER BY tanggal DESC LIMIT 9");
 $berita_populer = query("SELECT * FROM berita ORDER BY views DESC LIMIT 5");
@@ -44,15 +46,29 @@ if (isset($_POST["cari"])) {
             </div>
         </a>
         <input type="checkbox" id="click">
-        <label for="click" class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </label>
+        <label for="click" class="menu-btn"><i class="fas fa-bars"></i></label>
         <ul>
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#profil">Profil</a></li>
             <li><a href="#berita">Berita</a></li>
             <li><a href="#tentang">Tentang</a></li>
-            <li><a class="active" href="login/login.php"><i class='bx bx-user-circle'></i>Masuk</a></li>
+
+            <li>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <div class="user-dropdown">
+                        <button class="user-btn">
+                            <?= htmlspecialchars($_SESSION['user']['username']) ?>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="dashboard/dashboard.php">Masuk ke Dashboard</a>
+                            <a href="login/logout.php">Logout</a>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <a class="active" href="login/login.php"><i class='bx bx-user-circle'></i>Masuk</a>
+                <?php endif; ?>
+            </li>
         </ul>
     </nav>
 
