@@ -13,121 +13,60 @@ function query($query)
     return $rows;
 }
 
-function tambah($data)
-{
-    global $conn;
-    $nama = htmlspecialchars($data["nama"]);
-    //upload gambar
-    $gambar = upload();
-    if (!$gambar) {
-        return false;
-    }
-
-    $query = "INSERT INTO galeri VALUES(null, '$nama', '$gambar')";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
-
-function tambahb($data)
-{
-    global $conn;
-    $kategori = htmlspecialchars($data["kategori"]);
-    $judul = htmlspecialchars($data["judul"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
-    $deskripsi = htmlspecialchars($data["deskripsi"]);
-    $isi = htmlspecialchars($data["isi_berita"]);
-    //upload gambar
-    $gambar = upload();
-    if (!$gambar) {
-        return false;
-    }
-
-    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', null)";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 function add($data)
 {
     global $conn;
     $judul = htmlspecialchars($data["judul"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);  
+    $tanggal = htmlspecialchars($data["tanggal"]);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
     $isi = htmlspecialchars($data["isi_artikel"]);
-    //upload gambar
+
     $gambar = upload();
     if (!$gambar) {
-        return false;
+        header("Location: tambah.php"); // ⬅️ langsung reload agar alert bisa muncul
+        exit;
     }
 
-    $query = "INSERT INTO artikel VALUES(null, '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', null)";
+    $query = "INSERT INTO artikel VALUES(null, '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', 0)";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
 }
 
-function upload()
+function upload($required = true)
 {
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $namaFile = $_FILES['gambar']['name'];
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
-    //cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
-        echo "
-            <script>
-            alert('Pilih Gambar Dulu bero!');
-            </script>
-        ";
+        if ($required) {
+            $_SESSION['upload_error'] = 'Pilih gambar terlebih dahulu.';
+        }
         return false;
     }
 
-    //cek apakah yang diupload adalah gambar
     $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-    $ekstensiGambar = explode('.', $namaFile);
-    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    $ekstensiGambar = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-        echo "
-            <script>
-            alert('Yang anda upload bukan gambar bero!');
-            </script>
-        ";
+        $_SESSION['upload_error'] = 'File harus berupa gambar (jpg/jpeg/png).';
         return false;
     }
 
-    //cek jika ukurannya terlalu besar
     if ($ukuranFile > 5000000) {
-        echo "
-            <script>
-            alert('Ukuran gambar terlalu besar bero!');
-            </script>
-        ";
+        $_SESSION['upload_error'] = 'Ukuran gambar terlalu besar. Maksimal 5MB.';
         return false;
     }
 
-    //lolos pengecekan, gambar siap diupload
-    //generate nama gambar baru
-    $namaFileBaru = uniqid();
-    $namaFileBaru .= '.';
-    $namaFileBaru .= $ekstensiGambar;
+    $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
     return $namaFileBaru;
 }
 
-function hapus($id)
-{
-    global $conn;
-    mysqli_query($conn, "DELETE FROM galeri WHERE id = $id");
-    return mysqli_affected_rows($conn);
-}
-function hafus($id)
-{
-    global $conn;
-    mysqli_query($conn, "DELETE FROM berita WHERE id = $id");
-    return mysqli_affected_rows($conn);
-}
+
 function delete($id)
 {
     global $conn;
@@ -135,71 +74,11 @@ function delete($id)
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data)
-{
-    global $conn;
-    $id = $data["id"];
-    $nama = htmlspecialchars($data["nama"]);
-    $gambarLama = htmlspecialchars($data["gambarLama"]);
-
-    //cek apakah user pilih gambar baru atau tidak
-    if ($_FILES['gambar']['error'] === 4) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-    }
-
-    $gambar = htmlspecialchars($data["gambar"]);
-
-    $query = "UPDATE galeri SET
-                nama = '$nama',
-                gambar = '$gambar'
-                WHERE id = $id
-                ";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
-function uvah($data, $files)
-{
-    global $conn;
-    $id = $data["id"];
-    $kategori = htmlspecialchars($data["kategori"]);
-    $judul = htmlspecialchars($data["judul"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
-    $deskripsi = htmlspecialchars($data["deskripsi"]);
-    $isi = htmlspecialchars($data["isi_berita"]);
-    $gambarLama = htmlspecialchars($data["gambarLama"]);
-
-    // cek apakah user upload gambar baru
-    if ($files['gambar']['error'] === 4) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-        if (!$gambar) {
-            return false; // Gagal upload
-        }
-        // Hapus gambar lama
-        if (file_exists("images/" . $gambarLama) && $gambarLama != ".jpg") {
-            unlink("images/" . $gambarLama);
-        }
-    }
-
-    $query = "UPDATE berita SET
-                kategori = '$kategori',
-                judul = '$judul',
-                tanggal = '$tanggal',
-                deskripsi = '$deskripsi',
-                isi_berita = '$isi',
-                gambar = '$gambar'
-              WHERE id = $id";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 function edit($data, $files)
 {
     global $conn;
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $id = $data["id"];
     $judul = htmlspecialchars($data["judul"]);
     $tanggal = htmlspecialchars($data["tanggal"]);
@@ -211,10 +90,13 @@ function edit($data, $files)
     if ($files['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
-        $gambar = upload();
+        $gambar = upload(false); // tidak wajib
         if (!$gambar) {
-            return false; // Gagal upload
+            // Jangan timpa pesan upload_error dari upload()!
+            header("Location: ubah.php?id=" . $id);
+            exit;
         }
+
         // Hapus gambar lama
         if (file_exists("images/" . $gambarLama) && $gambarLama != ".jpg") {
             unlink("images/" . $gambarLama);
@@ -234,22 +116,7 @@ function edit($data, $files)
 }
 
 
-function cari($keyword)
-{
-    $query = "SELECT * FROM galeri 
-            WHERE
-            nama LIKE '%$keyword%'
-            ";
-    return query($query);
-}
-function cary($keyword)
-{
-    $query = "SELECT * FROM berita 
-            WHERE
-            judul LIKE '%$keyword%'
-            ";
-    return query($query);
-}
+
 function search($keyword)
 {
     $query = "SELECT * FROM artikel 
@@ -257,32 +124,4 @@ function search($keyword)
             judul LIKE '%$keyword%'
             ";
     return query($query);
-}
-
-function registrasi($data)
-{
-    global $conn;
-
-    $username = strtolower(stripslashes($data["username"]));
-    $email = $data["email"];
-    $password = mysqli_real_escape_string($conn, $data["password"]);
-
-    //cek username udah ada tau belum
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-    if (mysqli_fetch_assoc($result)) {
-        echo "<script>
-        alert('username sudah terdaftar');
-        </script>";
-
-        return false;
-    }
-
-    //enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    //tambahkan user baru ke database
-    mysqli_query($conn, "INSERT INTO user VALUES (NULL, '$username', '$email', '$password')");
-
-    return mysqli_affected_rows($conn);
 }

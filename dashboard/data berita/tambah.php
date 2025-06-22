@@ -85,7 +85,7 @@ if (isset($_POST["submit"])) {
                 text: 'Data berhasil ditambahkan!',
                 confirmButtonText: 'OK',
                 customClass: {
-                    popup: 'my-swal-button',
+                    popup: 'my-swal-popup',
                     confirmButton: 'my-ok-button'
                 }
             }).then(() => {
@@ -98,7 +98,7 @@ if (isset($_POST["submit"])) {
                 text: 'Data gagal ditambahkan!',
                 confirmButtonText: 'OK',
                 customClass: {
-                    popup: 'my-swal-button',
+                    popup: 'my-swal-popup',
                     confirmButton: 'my-ok-button'
                 }
             }).then(() => {

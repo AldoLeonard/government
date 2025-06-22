@@ -29,24 +29,6 @@ function tambah($data)
     return mysqli_affected_rows($conn);
 }
 
-function tambahb($data)
-{
-    global $conn;
-    $kategori = htmlspecialchars($data["kategori"]);
-    $judul = htmlspecialchars($data["judul"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
-    $deskripsi = htmlspecialchars($data["deskripsi"]);
-    //upload gambar
-    $gambar = upload();
-    if (!$gambar) {
-        return false;
-    }
-
-    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$gambar')";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 function upload()
 {
@@ -103,12 +85,6 @@ function hapus($id)
     mysqli_query($conn, "DELETE FROM galeri WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
-function hafus($id)
-{
-    global $conn;
-    mysqli_query($conn, "DELETE FROM berita WHERE id = $id");
-    return mysqli_affected_rows($conn);
-}
 
 function ubah($data)
 {
@@ -135,37 +111,7 @@ function ubah($data)
 
     return mysqli_affected_rows($conn);
 }
-function uvah($data)
-{
-    global $conn;
-    $id = $data["id"];
-    $kategori = htmlspecialchars($data["kategori"]);
-    $judul = htmlspecialchars($data["judul"]);
-    $tanggal = htmlspecialchars($data["tanggal"]);
-    $deskripsi = htmlspecialchars($data["deskripsi"]);
-    $gambarLama = htmlspecialchars($data["gambarLama"]);
 
-    //cek apakah user pilih gambar baru atau tidak
-    if ($_FILES['gambar']['error'] === 4) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-    }
-
-    $gambar = htmlspecialchars($data["gambar"]);
-
-    $query = "UPDATE berita SET
-                kategori = '$kategori',
-                judul = '$judul',
-                tanggal = '$tanggal',
-                deskripsi = '$deskripsi',
-                gambar = '$gambar'
-                WHERE id = $id
-                ";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 function cari($keyword)
 {
@@ -174,40 +120,4 @@ function cari($keyword)
             nama LIKE '%$keyword%'
             ";
     return query($query);
-}
-function cary($keyword)
-{
-    $query = "SELECT * FROM berita 
-            WHERE
-            judul LIKE '%$keyword%'
-            ";
-    return query($query);
-}
-
-function registrasi($data)
-{
-    global $conn;
-
-    $username = strtolower(stripslashes($data["username"]));
-    $email = $data["email"];
-    $password = mysqli_real_escape_string($conn, $data["password"]);
-
-    //cek username udah ada tau belum
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-    if (mysqli_fetch_assoc($result)) {
-        echo "<script>
-        alert('username sudah terdaftar');
-        </script>";
-
-        return false;
-    }
-
-    //enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    //tambahkan user baru ke database
-    mysqli_query($conn, "INSERT INTO user VALUES (NULL, '$username', '$email', '$password')");
-
-    return mysqli_affected_rows($conn);
 }

@@ -13,22 +13,6 @@ function query($query)
     return $rows;
 }
 
-function tambah($data)
-{
-    global $conn;
-    $nama = htmlspecialchars($data["nama"]);
-    //upload gambar
-    $gambar = upload();
-    if (!$gambar) {
-        return false;
-    }
-
-    $query = "INSERT INTO galeri VALUES(null, '$nama', '$gambar')";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
-
 function tambahb($data)
 {
     global $conn;
@@ -58,12 +42,7 @@ function upload()
 
     //cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
-        echo "
-            <script>
-            alert('Pilih Gambar Dulu bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Pilih gambar dulu'];
     }
 
     //cek apakah yang diupload adalah gambar
@@ -71,39 +50,20 @@ function upload()
     $ekstensiGambar = explode('.', $namaFile);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-        echo "
-            <script>
-            alert('Yang anda upload bukan gambar bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Yang anda upload bukan gambar'];
     }
 
     //cek jika ukurannya terlalu besar
     if ($ukuranFile > 5000000) {
-        echo "
-            <script>
-            alert('Ukuran gambar terlalu besar bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Ukuran gambar terlalu besar'];
     }
 
-    //lolos pengecekan, gambar siap diupload
-    //generate nama gambar baru
-    $namaFileBaru = uniqid();
-    $namaFileBaru .= '.';
-    $namaFileBaru .= $ekstensiGambar;
+   $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
-    return $namaFileBaru;
+    return ['status' => true, 'file' => $namaFileBaru];
 }
 
-function hapus($id)
-{
-    global $conn;
-    mysqli_query($conn, "DELETE FROM galeri WHERE id = $id");
-    return mysqli_affected_rows($conn);
-}
+
 function hafus($id)
 {
     global $conn;
@@ -111,31 +71,6 @@ function hafus($id)
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data)
-{
-    global $conn;
-    $id = $data["id"];
-    $nama = htmlspecialchars($data["nama"]);
-    $gambarLama = htmlspecialchars($data["gambarLama"]);
-
-    //cek apakah user pilih gambar baru atau tidak
-    if ($_FILES['gambar']['error'] === 4) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-    }
-
-    $gambar = htmlspecialchars($data["gambar"]);
-
-    $query = "UPDATE galeri SET
-                nama = '$nama',
-                gambar = '$gambar'
-                WHERE id = $id
-                ";
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 function uvah($data, $files)
 {
     global $conn;
@@ -175,16 +110,6 @@ function uvah($data, $files)
 }
 
 
-
-
-function cari($keyword)
-{
-    $query = "SELECT * FROM galeri 
-            WHERE
-            nama LIKE '%$keyword%'
-            ";
-    return query($query);
-}
 function cary($keyword)
 {
     $query = "SELECT * FROM berita 
@@ -194,30 +119,3 @@ function cary($keyword)
     return query($query);
 }
 
-function registrasi($data)
-{
-    global $conn;
-
-    $username = strtolower(stripslashes($data["username"]));
-    $email = $data["email"];
-    $password = mysqli_real_escape_string($conn, $data["password"]);
-
-    //cek username udah ada tau belum
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-    if (mysqli_fetch_assoc($result)) {
-        echo "<script>
-        alert('username sudah terdaftar');
-        </script>";
-
-        return false;
-    }
-
-    //enkripsi password
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    //tambahkan user baru ke database
-    mysqli_query($conn, "INSERT INTO user VALUES (NULL, '$username', '$email', '$password')");
-
-    return mysqli_affected_rows($conn);
-}

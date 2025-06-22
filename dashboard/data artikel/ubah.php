@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("functions.php");
 
 $id = $_GET["id"];
@@ -8,11 +9,18 @@ if (isset($_POST["submit"])) {
 
     if (edit($_POST, $_FILES) > 0) {
         $success = true;
-        $brt = query("SELECT * FROM artikel WHERE id = $id")[0];
+        $art = query("SELECT * FROM artikel WHERE id = $id")[0];
     } else {
         $error = true;
     }
 }
+
+$uploadAlert = null;
+if (isset($_SESSION['upload_error'])) {
+    $uploadAlert = $_SESSION['upload_error'];
+    unset($_SESSION['upload_error']); // hapus setelah dibaca
+}
+
 
 ?>
 
@@ -96,13 +104,27 @@ if (isset($_POST["submit"])) {
                 text: 'Data gagal diubah!',
                 confirmButtonText: 'OK',
                 customClass: {
-                    popup: 'my-swal-button',
+                    popup: 'my-swal-popup',
                     confirmButton: 'my-ok-button'
                 }
             }).then(() => {
                 window.location.href = 'artikel.php';
             });
         <?php endif; ?>
+
+        <?php if (!empty($uploadAlert)): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Upload Gagal!',
+            text: '<?= $uploadAlert; ?>',
+            confirmButtonText: 'Oke',
+            customClass: {
+                popup: 'my-swal-popup',
+                confirmButton: 'my-ok-button'
+            },
+            buttonStyling: false
+        });
+    <?php endif; ?>
     </script>
 
 </body>

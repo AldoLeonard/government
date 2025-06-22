@@ -57,12 +57,7 @@ function upload()
 
     //cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
-        echo "
-            <script>
-            alert('Pilih Gambar Dulu bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Pilih gambar dulu'];
     }
 
     //cek apakah yang diupload adalah gambar
@@ -70,31 +65,17 @@ function upload()
     $ekstensiGambar = explode('.', $namaFile);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-        echo "
-            <script>
-            alert('Yang anda upload bukan gambar bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Yang anda upload bukan gambar'];
     }
 
     //cek jika ukurannya terlalu besar
     if ($ukuranFile > 5000000) {
-        echo "
-            <script>
-            alert('Ukuran gambar terlalu besar bero!');
-            </script>
-        ";
-        return false;
+        return ['status' => false, 'message' => 'Ukuran gambar terlalu besar'];
     }
 
-    //lolos pengecekan, gambar siap diupload
-    //generate nama gambar baru
-    $namaFileBaru = uniqid();
-    $namaFileBaru .= '.';
-    $namaFileBaru .= $ekstensiGambar;
+   $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
-    return $namaFileBaru;
+    return ['status' => true, 'file' => $namaFileBaru];
 }
 
 function hapus($id)
