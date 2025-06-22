@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("functions.php");
 if (isset($_POST["submit"])) {
 
@@ -7,6 +8,12 @@ if (isset($_POST["submit"])) {
     } else {
         $error = true;
     }
+}
+
+$uploadAlert = null;
+if (isset($_SESSION['upload_error'])) {
+    $uploadAlert = $_SESSION['upload_error'];
+    unset($_SESSION['upload_error']); // hapus setelah ditampilkan
 }
 
 
@@ -60,7 +67,7 @@ if (isset($_POST["submit"])) {
         </div>
 
         <div class="upload-btn full center">
-            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)" required>
+            <input type="file" name="gambar" id="gambar" accept="image/*" onchange="previewImage(event)">
             <img id="preview" style="max-width:200px; margin-top: 10px; margin-bottom:10px;">
             <label for="gambar">Upload Gambar</label>
         </div>
@@ -105,6 +112,19 @@ if (isset($_POST["submit"])) {
                 window.location.href = 'berita.php';
             });
         <?php endif; ?>
+        <?php if (!empty($uploadAlert)): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Upload Gagal!',
+            text: '<?= $uploadAlert; ?>',
+            confirmButtonText: 'Oke',
+            customClass: {
+                popup: 'my-swal-popup',
+                confirmButton: 'my-ok-button'
+            },
+            buttonStyling: false
+        });
+    <?php endif; ?>
     </script>
 </body>
 

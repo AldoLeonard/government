@@ -21,46 +21,50 @@ function tambahb($data)
     $tanggal = htmlspecialchars($data["tanggal"]);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
     $isi = htmlspecialchars($data["isi_berita"]);
-    //upload gambar
+
     $gambar = upload();
     if (!$gambar) {
-        return false;
+        header("Location: tambah.php"); 
+        exit;
     }
 
-    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', null)";
+    $query = "INSERT INTO berita VALUES(null, '$kategori', '$judul', '$tanggal', '$deskripsi', '$isi', '$gambar', 0)";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
 }
 
-function upload()
+function upload($required = true)
 {
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $namaFile = $_FILES['gambar']['name'];
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
-    //cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
-        return ['status' => false, 'message' => 'Pilih gambar dulu'];
+        if ($required) {
+            $_SESSION['upload_error'] = 'Pilih gambar terlebih dahulu.';
+        }
+        return false;
     }
 
-    //cek apakah yang diupload adalah gambar
     $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-    $ekstensiGambar = explode('.', $namaFile);
-    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    $ekstensiGambar = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-        return ['status' => false, 'message' => 'Yang anda upload bukan gambar'];
+        $_SESSION['upload_error'] = 'File harus berupa gambar (jpg/jpeg/png).';
+        return false;
     }
 
-    //cek jika ukurannya terlalu besar
     if ($ukuranFile > 5000000) {
-        return ['status' => false, 'message' => 'Ukuran gambar terlalu besar'];
+        $_SESSION['upload_error'] = 'Ukuran gambar terlalu besar. Maksimal 5MB.';
+        return false;
     }
 
-   $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
+    $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
-    return ['status' => true, 'file' => $namaFileBaru];
+    return $namaFileBaru;
 }
 
 
@@ -74,6 +78,8 @@ function hafus($id)
 function uvah($data, $files)
 {
     global $conn;
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $id = $data["id"];
     $kategori = htmlspecialchars($data["kategori"]);
     $judul = htmlspecialchars($data["judul"]);
@@ -86,10 +92,13 @@ function uvah($data, $files)
     if ($files['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
-        $gambar = upload();
+        $gambar = upload(false); // tidak wajib
         if (!$gambar) {
-            return false; // Gagal upload
+            // Jangan timpa pesan upload_error dari upload()!
+            header("Location: ubah.php?id=" . $id);
+            exit;
         }
+
         // Hapus gambar lama
         if (file_exists("images/" . $gambarLama) && $gambarLama != ".jpg") {
             unlink("images/" . $gambarLama);

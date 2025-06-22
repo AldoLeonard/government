@@ -23,7 +23,7 @@ function add($data)
 
     $gambar = upload();
     if (!$gambar) {
-        header("Location: tambah.php"); // ⬅️ langsung reload agar alert bisa muncul
+        header("Location: tambah.php"); 
         exit;
     }
 
