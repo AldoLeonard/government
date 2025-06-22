@@ -20,7 +20,8 @@ function tambah($data)
     //upload gambar
     $gambar = upload();
     if (!$gambar) {
-        return false;
+        header("Location: tambah.php"); 
+        exit;
     }
 
     $query = "INSERT INTO galeri VALUES(null, '$nama', '$gambar')";
@@ -30,51 +31,35 @@ function tambah($data)
 }
 
 
-function upload()
+function upload($required = true)
 {
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $namaFile = $_FILES['gambar']['name'];
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
-    //cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
-        echo "
-            <script>
-            alert('Pilih Gambar Dulu bero!');
-            </script>
-        ";
+        if ($required) {
+            $_SESSION['upload_error'] = 'Pilih gambar terlebih dahulu.';
+        }
         return false;
     }
 
-    //cek apakah yang diupload adalah gambar
     $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-    $ekstensiGambar = explode('.', $namaFile);
-    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    $ekstensiGambar = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
     if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
-        echo "
-            <script>
-            alert('Yang anda upload bukan gambar bero!');
-            </script>
-        ";
+        $_SESSION['upload_error'] = 'File harus berupa gambar (jpg/jpeg/png).';
         return false;
     }
 
-    //cek jika ukurannya terlalu besar
     if ($ukuranFile > 5000000) {
-        echo "
-            <script>
-            alert('Ukuran gambar terlalu besar bero!');
-            </script>
-        ";
+        $_SESSION['upload_error'] = 'Ukuran gambar terlalu besar. Maksimal 5MB.';
         return false;
     }
 
-    //lolos pengecekan, gambar siap diupload
-    //generate nama gambar baru
-    $namaFileBaru = uniqid();
-    $namaFileBaru .= '.';
-    $namaFileBaru .= $ekstensiGambar;
+    $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
     move_uploaded_file($tmpName, 'images/' . $namaFileBaru);
     return $namaFileBaru;
 }
@@ -86,21 +71,31 @@ function hapus($id)
     return mysqli_affected_rows($conn);
 }
 
-function ubah($data)
+function ubah($data, $files)
 {
     global $conn;
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
     $id = $data["id"];
     $nama = htmlspecialchars($data["nama"]);
     $gambarLama = htmlspecialchars($data["gambarLama"]);
 
     //cek apakah user pilih gambar baru atau tidak
-    if ($_FILES['gambar']['error'] === 4) {
+    if ($files['gambar']['error'] === 4) {
         $gambar = $gambarLama;
     } else {
-        $gambar = upload();
+        $gambar = upload(false); // tidak wajib
+        if (!$gambar) {
+            // Jangan timpa pesan upload_error dari upload()!
+            header("Location: ubah.php?id=" . $id);
+            exit;
+        }
+
+        // Hapus gambar lama
+        if (file_exists("images/" . $gambarLama) && $gambarLama != ".jpg") {
+            unlink("images/" . $gambarLama);
+        }
     }
-
-
 
     $query = "UPDATE galeri SET
                 nama = '$nama',

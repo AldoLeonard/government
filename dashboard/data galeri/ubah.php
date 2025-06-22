@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("functions.php");
 
 $id = $_GET["id"];
@@ -12,6 +13,12 @@ if (isset($_POST["submit"])) {
     } else {
         $error = true;
     }
+}
+
+$uploadAlert = null;
+if (isset($_SESSION['upload_error'])) {
+    $uploadAlert = $_SESSION['upload_error'];
+    unset($_SESSION['upload_error']); // hapus setelah ditampilkan
 }
 
 ?>
@@ -85,6 +92,19 @@ if (isset($_POST["submit"])) {
                 window.location.href = 'galeri.php';
             });
         <?php endif; ?>
+        <?php if (!empty($uploadAlert)): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Upload Gagal!',
+            text: '<?= $uploadAlert; ?>',
+            confirmButtonText: 'Oke',
+            customClass: {
+                popup: 'my-swal-popup',
+                confirmButton: 'my-ok-button'
+            },
+            buttonStyling: false
+        });
+    <?php endif; ?>
     </script>
 </body>
 
