@@ -153,3 +153,9 @@
     border: none;
 }
 
+.my-swal-popup {
+    border-radius: 30px;
+    padding: 20px;
+}
+
+

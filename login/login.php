@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
-           $_SESSION['user'] = [
+            $_SESSION['user'] = [
                 'id' => $row['id'],
                 'username' => $row['username'],
                 'email' => $row['email']
@@ -27,15 +27,16 @@ if (isset($_POST["login"])) {
 
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {
-        echo "
-            <script>
-            alert('User berhasil ditambahkan!');
-            </script>
-        ";
+        $_SESSION['register_success'] = true;
+        header("Location: login.php");
+        exit;
     } else {
-        echo mysqli_error($conn);
+        $_SESSION['register_error'] = true;
+        header("Location: login.php");
+        exit;
     }
 }
+
 
 ?>
 
@@ -44,6 +45,7 @@ if (isset($_POST["register"])) {
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="../images/logo1.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,7 +125,7 @@ if (isset($_POST["register"])) {
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const container = document.querySelector(".container"),
             pwShowHide = document.querySelectorAll(".showHidePw"),
@@ -159,6 +161,36 @@ if (isset($_POST["register"])) {
         login.addEventListener("click", () => {
             container.classList.remove("active");
         });
+
+        <?php if (isset($_SESSION['register_success'])): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Pendaftaran Berhasil!',
+                text: 'Silakan login untuk melanjutkan.',
+                confirmButtonText: 'OK',
+                customClass: {
+                    popup: 'my-swal-popup',
+                    confirmButton: 'my-swal-button'
+                },
+                buttonStyling: false
+            });
+        <?php unset($_SESSION['register_success']);
+        endif; ?>
+
+        <?php if (isset($_SESSION['register_error'])): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Pendaftaran Gagal!',
+                text: 'Username mungkin sudah digunakan.',
+                confirmButtonText: 'Coba Lagi',
+                customClass: {
+                    popup: 'my-swal-popup',
+                    confirmButton: 'my-swal-button'
+                },
+                buttonStyling: false
+            });
+        <?php unset($_SESSION['register_error']);
+        endif; ?>
     </script>
 
 </body>

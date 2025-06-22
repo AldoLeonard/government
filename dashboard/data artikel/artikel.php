@@ -149,6 +149,7 @@ $email = $_SESSION['user']['email'];
         confirmButtonText: 'Ya, hapus!',
         cancelButtonText: 'Batal',
         customClass: {
+          popup: 'my-swal-button',
           confirmButton: 'my-confirm-button',
           cancelButton: 'my-cancel-button'
         }
@@ -167,6 +168,7 @@ $email = $_SESSION['user']['email'];
           text: 'Data berhasil dihapus!',
           confirmButtonText: 'OK',
           customClass: {
+            popup: 'my-swal-button',
             confirmButton: 'my-ok-button'
           }
         }).then(() => {
@@ -179,6 +181,7 @@ $email = $_SESSION['user']['email'];
           text: 'Data gagal dihapus.',
           confirmButtonText: 'OK',
           customClass: {
+            popup: 'my-swal-button',
             confirmButtonText: 'my-ok-button'
           }
         }).then(() => {

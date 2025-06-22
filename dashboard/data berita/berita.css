@@ -458,3 +458,10 @@ td:nth-child(5) {
   left: 78px;
 }
 
+
+.my-swal-popup {
+    border-radius: 30px;
+    padding: 20px;
+}
+
+

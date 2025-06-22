@@ -426,3 +426,9 @@ table>tbody>tr:nth-child(even) {
 .sidebar.close .profile-dropdown {
   left: 78px;
 }
+
+
+.my-swal-popup {
+    border-radius: 30px;
+    padding: 20px;
+}
