@@ -17,7 +17,7 @@ if (isset($_POST["login"])) {
                 'username' => $row['username'],
                 'email' => $row['email']
             ];
-            header("Location: ../dashboard/dashboard.php");
+            header("Location: ../homepage.php");
             exit;
         }
     }

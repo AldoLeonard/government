@@ -16,6 +16,11 @@ if (!isset($_SESSION['user'])) {
 
 $username = $_SESSION['user']['username'];
 $email = $_SESSION['user']['email'];
+
+$totalBerita = query ("SELECT COUNT(*) AS total FROM berita")[0]['total'];
+$totalArtikel = query ("SELECT COUNT(*) AS total FROM artikel")[0]['total'];
+$totalViewsBerita = query ("SELECT SUM(views) AS total FROM berita")[0]['total'];
+$totalViewsArtikel = query ("SELECT SUM(views) AS total FROM artikel")[0]['total'];
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +72,24 @@ $email = $_SESSION['user']['email'];
       <span class="text">
         <h1>Dashboard</h1>
       </span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3>Total Berita</h3>
+        <p><?= $totalBerita ?></p>
+      </div>
+      <div class="card">
+        <h3>Total Artikel</h3>
+        <p><?= $totalArtikel ?></p>
+      </div>
+      <div class="card">
+        <h3>Total Views Berita</h3>
+        <p><?= $totalViewsBerita ?></p>
+      </div>
+      <div class="card">
+        <h3>Total Views Artikel</h3>
+        <p><?= $totalViewsArtikel ?></p>
+      </div>
     </div>
   </section>
 </body>
