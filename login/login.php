@@ -61,9 +61,6 @@ if (isset($_POST["register"])) {
         <div class="forms">
             <div class="form login">
                 <span class="title">WELCOME BACK</span>
-                <?php if (isset($error)) : ?>
-                    <p style="color:red; font-style: italic;"> username / password salah </p>
-                <?php endif; ?>
 
                 <form action="" method="post">
                     <div class="input-field">
@@ -191,6 +188,20 @@ if (isset($_POST["register"])) {
             });
         <?php unset($_SESSION['register_error']);
         endif; ?>
+
+        <?php if (isset($error)): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Gagal!',
+                text: 'Username atau password salah.',
+                confirmButtonText: 'Coba Lagi',
+                customClass: {
+                    popup: 'my-swal-popup',
+                    confirmButton: 'my-swal-button'
+                },
+                buttonStyling: false
+            });
+        <?php endif; ?>
     </script>
 
 </body>
