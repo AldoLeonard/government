@@ -265,8 +265,11 @@ if (isset($_POST["cari"])) {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-
-
+        });
+        document.querySelectorAll("nav ul li a").forEach(link => {
+            link.addEventListener("click", () => {
+                document.getElementById("click").checked = false;
+            });
         });
     </script>
 
