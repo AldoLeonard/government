@@ -1257,4 +1257,18 @@ footer {
   padding: 35px 45px;
 }
 
+.informasi-kec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.informasi-kec .info-text {
+  width: 100%;
+  text-align: center;
+}
+
+
 }
