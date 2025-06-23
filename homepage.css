@@ -1159,21 +1159,43 @@ footer {
   color: #555;
 }
 
+.berita-kanan {
+  width: 100%;
+}
+
 .twibbon, .pariwisata {
   order: 2;
   margin-top: 30px;
 }
 
 .twibbon-title, .wisata-title {
-  text-align: center;
+  text-align: left;
   font-size: 20px;
   margin-bottom: 15px;
+}
+
+.twibbon-title h1::before {
+  display: none;
+}
+.twibbon-title h1::after {
+  display: none;
 }
 
 .twibbon-card {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.text-populer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.text-populer a {
+  margin: 10px 0 10px 0;
 }
 
 
