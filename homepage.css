@@ -1161,6 +1161,7 @@ footer {
 
 .berita-kanan {
   width: 100%;
+  padding: 10px;
 }
 
 .twibbon, .pariwisata {
@@ -1248,6 +1249,12 @@ footer {
 
 .swiper .swiper-pagination-bullet-active {
   background: #5CDB95;
+}
+
+.berita-bawah {
+  background: rgb(247, 250, 255);
+  width: 100%;
+  padding: 35px 45px;
 }
 
 }
