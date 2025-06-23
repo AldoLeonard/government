@@ -107,9 +107,7 @@ if (isset($_POST["cari"])) {
                     <p>Baca Berita Terkini di Kabupaten Cirebon</p>
                 </div>
                 <div class="pattern-1">
-
                 </div>
-
                 <section class="post container">
                     <?php $i = 1;  ?>
                     <?php foreach ($berita as $row) : ?>
@@ -128,7 +126,6 @@ if (isset($_POST["cari"])) {
                         <?php $i++;  ?>
                     <?php endforeach; ?>
                 </section>
-
             </div>
             <div class="berita-kanan">
                 <form action="" method="post">
@@ -139,7 +136,6 @@ if (isset($_POST["cari"])) {
                         <button type="submit" name="cari" id="tombol-cari"></button>
                 </form>
                 <div class="live-box">
-
                 </div>
             </div>
             <div class="twibbon">
@@ -157,9 +153,7 @@ if (isset($_POST["cari"])) {
                 </div>
             </div>
             <div class="pattern-2">
-
             </div>
-
             <div class="pariwisata">
                 <div class="wisata-title">
                     <h1>Gallery</h1>
@@ -180,7 +174,6 @@ if (isset($_POST["cari"])) {
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
-
                 </div>
             </div>
         </div>
