@@ -1270,5 +1270,35 @@ footer {
   text-align: center;
 }
 
+footer .footer-content {
+  padding: 20px;
+  text-align: center;
+}
+
+footer .footer-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+footer .socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .socials li a{
+  font-size: 20px;
+}
+
+.copyright {
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
+}
 
 }
