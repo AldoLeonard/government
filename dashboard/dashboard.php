@@ -1,7 +1,7 @@
 <?php
 
 require("../functions.php");
-session_start(); 
+session_start();
 $galeri = query("SELECT * FROM galeri ORDER BY id ASC");
 
 //tombol cari diklik
@@ -10,17 +10,17 @@ if (isset($_POST["cari"])) {
 }
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../login/login.php");
-    exit;
+  header("Location: ../login/login.php");
+  exit;
 }
 
 $username = $_SESSION['user']['username'];
 $email = $_SESSION['user']['email'];
 
-$totalBerita = query ("SELECT COUNT(*) AS total FROM berita")[0]['total'];
-$totalArtikel = query ("SELECT COUNT(*) AS total FROM artikel")[0]['total'];
-$totalViewsBerita = query ("SELECT SUM(views) AS total FROM berita")[0]['total'];
-$totalViewsArtikel = query ("SELECT SUM(views) AS total FROM artikel")[0]['total'];
+$totalBerita = query("SELECT COUNT(*) AS total FROM berita")[0]['total'];
+$totalArtikel = query("SELECT COUNT(*) AS total FROM artikel")[0]['total'];
+$totalViewsBerita = query("SELECT SUM(views) AS total FROM berita")[0]['total'];
+$totalViewsArtikel = query("SELECT SUM(views) AS total FROM artikel")[0]['total'];
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +36,13 @@ $totalViewsArtikel = query ("SELECT SUM(views) AS total FROM artikel")[0]['total
 </head>
 
 <body>
+  <!-- Navigation Bar (Visible on Mobile) -->
+  <nav class="mobile-navbar">
+    <div class="menu-icon" id="menu-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+    <div class="mobile-title">Dashboard</div>
+  </nav>
   <div class="sidebar close">
     <ul class="nav-links">
       <li>
@@ -56,15 +63,15 @@ $totalViewsArtikel = query ("SELECT SUM(views) AS total FROM artikel")[0]['total
       </li>
     </ul>
     <div class="profile-hover">
-        <div class="profile-icon">
-          <i class='bx bx-user'></i>
-        </div>
-        <div class="profile-dropdown">
-          <div class="profile-name"><?= $username; ?></div>
-          <div class="profile-email"><?= $email; ?></div>
-          <div><a href="../homepage.php">Kembali</a></div>
-          </div>
+      <div class="profile-icon">
+        <i class='bx bx-user'></i>
       </div>
+      <div class="profile-dropdown">
+        <div class="profile-name"><?= $username; ?></div>
+        <div class="profile-email"><?= $email; ?></div>
+        <div><a href="../homepage.php">Kembali</a></div>
+      </div>
+    </div>
   </div>
 
   <section class="home-section">

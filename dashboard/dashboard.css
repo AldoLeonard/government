@@ -303,27 +303,6 @@ table>tbody>tr:nth-child(even) {
 
 
 
-@media (max-width: 400px) {
-  .sidebar.close .nav-links li .sub-menu{
-    display: none;
-  }
-  .sidebar{
-    width: 78px;
-  }
-  .sidebar.close{
-    width: 0;
-  }
-  .home-section{
-    left: 78px;
-    width: calc(100% - 78px);
-    z-index: 100;
-  }
-  .sidebar.close ~ .home-section{
-    width: 100%;
-    left: 0;
-  }
-}
-
 /* PROFILE ICON DI BAWAH */
 .profile-hover {
   position: absolute;
@@ -369,7 +348,6 @@ table>tbody>tr:nth-child(even) {
   pointer-events: auto;
 }
 
-/* List text */
 .profile-dropdown div {
   font-size: 15px;
   margin-bottom: 8px;
@@ -389,11 +367,9 @@ table>tbody>tr:nth-child(even) {
   color: #5CDB95;
 }
 
-/* Sidebar close */
 .sidebar.close .profile-dropdown {
   left: 78px;
 }
-
 
 .cards {
   margin-top: 50px;
@@ -424,4 +400,82 @@ table>tbody>tr:nth-child(even) {
   font-size: 50px;
   font-weight: bold;
   color: #5CDB95;
+}
+
+.mobile-navbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar.close .nav-links li .sub-menu{
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #5CDB95;
+    padding: 15px 20px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .menu-icon i {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .mobile-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .home-section {
+    margin-top: 60px; /* untuk memberi ruang navbar */
+    left: 0;
+    width: 100%;
+  }
+
+.cards {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+  .sidebar{
+    width: 100%;
+    background-color: #5CDB95;
+  }
+  .sidebar.close{
+    width: 0;
+  }
+  .home-section{
+    left: 78px;
+    width: calc(100% - 78px);
+    z-index: 100;
+  }
+
+    .home-section .home-content{
+    height: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .home-content .text {
+    display: none;
+  }
+
+  .sidebar.close ~ .home-section{
+    width: 100%;
+    left: 0;
+  }
 }
