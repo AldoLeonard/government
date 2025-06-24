@@ -19,6 +19,11 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  color: #3f9565;
 }
 
 .judul {
@@ -45,3 +50,31 @@ body {
   line-height: 1.6;
   text-align: justify;
 }
+
+@media (max-width: 768px) {
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+    }
+
+    .back-button {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .judul {
+      font-size: 18px;
+    }
+
+        .tanggal {
+      font-size: 12px;
+    }
+
+    .isi {
+      font-size: 14px;
+    }
+} 

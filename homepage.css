@@ -305,9 +305,11 @@ nav ul li a:hover{
 }
 
 .profil-content iframe {
-    display: block;
-    position: relative;
-    width: 100%;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 .berita {

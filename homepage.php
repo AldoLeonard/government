@@ -92,7 +92,7 @@ if (isset($_POST["cari"])) {
                         <a href="https://id.wikipedia.org/wiki/Kabupaten_Cirebon" class="profil-btn">Selengkapnya</a>
                     </div>
                     <div class="profil-content">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/MNFpoSCCf8E?si=ei4im_2MX5AmTROC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/MNFpoSCCf8E?rel=0&modestbranding=1&playsinline=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
