@@ -13,7 +13,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(247, 250, 255);
+    background: #f4f4f4;
 }
 
 .container{
@@ -33,6 +33,7 @@ body{
     height: 440px;
     width: 200%;
     transition: height 0.2s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 
@@ -69,20 +70,10 @@ body{
 
 
 .form .title {
+    font-size: 20px;
     color: #5CDB95;
 }
 
-
-/* .form .title::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 370px;
-    background-color: #4070f4;
-    border-radius: 25px;
-} */
 
 .form .input-field{
     position: relative;
@@ -200,6 +191,21 @@ body{
     padding: 8px 20px;
     font-weight: bold;
     border: none;
+}
+
+@media (max-width: 768px) {
+
+    .container{
+        max-width: 80%;
+    }
+
+    .form .login-signup .text{
+        font-size: 12px;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+
 }
 
 
