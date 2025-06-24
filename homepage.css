@@ -19,6 +19,9 @@ body {
     min-height: 100vh;
     background: rgb(247, 250, 255);
     color: black;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 nav{
@@ -478,10 +481,11 @@ nav ul li a:hover{
 .search-box {
   position: relative;
   height: 50px;
-  max-width: 300px;
+  max-width: 100%;
   margin-bottom: 40px;
   margin-top: 50px;
-  margin: auto;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 .search-box input{
@@ -802,8 +806,8 @@ footer {
 }
 
 .footer-content p{
-  max-width: 800px;
-  margin: 10px auto;
+  max-width: 50%;
+  margin: 10px 10px;
   line-height: 28px;
   font-size: 16px;
   color: #EDF5E1;
@@ -900,6 +904,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  body {
+    width: 100%;
+  }
 
     nav{
       display: flex;
@@ -1027,7 +1035,8 @@ footer {
     max-width: 100%;
     width: 100%;
     margin: auto;
-    padding: 0 20px ;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .profil-isi {
@@ -1159,6 +1168,13 @@ footer {
   color: #555;
 }
 
+.search-box {
+  position: relative;
+  height: 50px;
+  max-width: 100%;
+  margin: auto;
+}
+
 .berita-kanan {
   width: 100%;
   padding: 10px;
@@ -1280,6 +1296,7 @@ footer .footer-content p {
   line-height: 1.5;
   margin-bottom: 15px;
   padding: 0 10px;
+  max-width: 100%;
 }
 
 footer .socials {
