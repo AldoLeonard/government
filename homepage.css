@@ -958,8 +958,8 @@ footer {
   nav ul{
     position: fixed;
     top: 70px;
-    left: -100%;
-    width: 30%;
+    right: -100%;
+    width: 50%;
     background: #fff;
     padding: 20px 20px;
     text-align: center;
@@ -969,7 +969,7 @@ footer {
     display: block;
   }
   #click:checked ~ ul{
-    left: 10px;
+    right: 10px;
   }
   nav ul li{
     margin: 10px 0;
@@ -1079,7 +1079,7 @@ footer {
   font-weight: 700;
   color: black;
   margin-bottom: 15px;
-  text-align: center;
+  text-align: left;
   align-items: center;
 }
 
@@ -1129,7 +1129,14 @@ footer {
   display: none;
 }
 .berita-judul h1::after {
-  display: none;
+  content: "";
+  display: block;
+  background: #5CDB95;
+  width: 70%;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .post-container {
@@ -1195,7 +1202,14 @@ footer {
   display: none;
 }
 .twibbon-title h1::after {
-  display: none;
+  content: "";
+  display: block;
+  background: #5CDB95;
+  width: 35%;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .twibbon-card {
@@ -1225,7 +1239,14 @@ footer {
  display: none;
 }
 .wisata-title h1::after {
-  display: none;
+  content: "";
+  display: block;
+  background: #5CDB95;
+  width: 65%;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 
 .swiper-box {
@@ -1265,6 +1286,25 @@ footer {
 
 .swiper .swiper-pagination-bullet-active {
   background: #5CDB95;
+}
+
+.pattern-1 {
+  width: 80px;
+  height: 80px;
+  left: 25px;
+}
+.pattern-2 {
+  background: #5CDB95;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  right: 25px;
+  margin-top: 110px;
+}
+.pattern-3 {
+  width: 40px;
+  height: 100px;
+  left: 20px;
 }
 
 .berita-bawah {
