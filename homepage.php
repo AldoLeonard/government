@@ -106,6 +106,14 @@ if (isset($_POST["cari"])) {
                     <h1>Berita</h1>
                     <p>Baca Berita Terkini di Kabupaten Cirebon</p>
                 </div>
+                <div class="search-box-mobile">
+                    <form action="" method="post">
+                            <i class="bx bx-search"></i>
+                            <input type="text" name="keyword" placeholder="Cari Berita..."
+                                autocomplete="off" id="keyword">
+                            <button type="submit" name="cari" id="tombol-cari"></button>
+                    </form>
+                </div>
                 <div class="pattern-1">
                 </div>
                 <section class="post container">

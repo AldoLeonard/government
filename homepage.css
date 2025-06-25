@@ -480,6 +480,30 @@ nav ul li a:hover{
   width: 30%;
 }
 
+.search-box-mobile {
+  display: none;
+  position: relative;
+}
+
+.search-box-mobile input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  padding: 0 15px 0 45px;
+  color: #5CDB95;
+  border-radius: 6px;
+}
+.search-box-mobile i{
+  position: absolute;
+  color: #5CDB95;
+  top: 50%;
+  left: 15px;
+  font-size: 20px;
+  transform: translateY(-50%);
+}
+
 .search-box {
   position: relative;
   height: 50px;
@@ -1164,6 +1188,39 @@ footer {
   top: 50%;
 }
 
+
+.search-box-mobile {
+  display: block;
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.search-box-mobile form input{
+  height: 50px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  padding: 0 15px 0 45px;
+  color: #5CDB95;
+  border-radius: 6px;
+}
+.search-box-mobile form i{
+  position: absolute;
+  color: #5CDB95;
+  top: 35%;
+  left: 15px;
+  font-size: 20px;
+  transform: translateY(-50%);
+}
+
+.search-box {
+  display: none;
+}
+
 .post-container {
   display: flex;
   flex-direction: column;
@@ -1198,13 +1255,6 @@ footer {
   font-size: 14px;
   margin-top: 5px;
   color: #555;
-}
-
-.search-box {
-  position: relative;
-  height: 50px;
-  max-width: 100%;
-  margin: auto;
 }
 
 .berita-kanan {
