@@ -110,7 +110,7 @@ if (isset($_POST["cari"])) {
                         <input type="text" name="keyword" placeholder="Cari Berita..."
                             autocomplete="off" id="keyword-mobile">
                     </form>
-                    <div id="search-result"></div>
+                    <div id="search-result-mobile"></div>
                 </div>
                 <div class="pattern-1">
                 </div>
@@ -272,12 +272,15 @@ if (isset($_POST["cari"])) {
 
         function liveSearch(inputId) {
             const input = document.getElementById(inputId);
+            const searchBoxMobile = document.getElementById("search-result-mobile");
             const searchBox = document.getElementById("search-result");
 
             input.addEventListener("keyup", function() {
                 const keyword = this.value.trim();
 
                 if (keyword === "") {
+                    searchBoxMobile.style.display = "none";
+                    searchBoxMobile.innerHTML = "";
                     searchBox.style.display = "none";
                     searchBox.innerHTML = "";
                     return;
@@ -288,6 +291,13 @@ if (isset($_POST["cari"])) {
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         const result = xhr.responseText.trim();
 
+                        if (result !== "") {
+                            searchBoxMobile.innerHTML = result;
+                            searchBoxMobile.style.display = "block";
+                        } else {
+                            searchBoxMobile.innerHTML = "<div class='search-item'>Tidak ditemukan berita.</div>";
+                            searchBoxMobile.style.display = "block";
+                        }
                         if (result !== "") {
                             searchBox.innerHTML = result;
                             searchBox.style.display = "block";
