@@ -33,15 +33,24 @@ $totalViewsArtikel = query("SELECT SUM(views) AS total FROM artikel")[0]['total'
   <link rel="stylesheet" href="dashboard.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
   <!-- Navigation Bar (Visible on Mobile) -->
   <nav class="mobile-navbar">
-    <div class="menu-icon" id="menu-toggle">
-      <i class='bx bx-menu'></i>
-    </div>
     <div class="mobile-title">Dashboard</div>
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <ul>
+        <div class="profile-name"><?= $username; ?></div>
+        <div class="profile-email"><?= $email; ?></div>
+        <div><a href="../homepage.php">Kembali</a></div>
+    </ul>
+    <!-- <div class="menu-icon" id="menu-toggle">
+      <i class='bx bx-menu'></i>
+    </div> -->
   </nav>
   <div class="sidebar close">
     <ul class="nav-links">

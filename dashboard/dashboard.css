@@ -425,14 +425,65 @@ table>tbody>tr:nth-child(even) {
     z-index: 999;
   }
 
-  .menu-icon i {
+  .menu-btn i {
     font-size: 24px;
+    display: block;
     cursor: pointer;
   }
 
   .mobile-title {
     font-size: 18px;
     font-weight: bold;
+  }
+
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+
+  nav ul{
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 50%;
+    background: #fff;
+    padding: 20px 20px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  #click {
+    display: none;
+  }
+  
+  #click:checked ~ ul{
+    right: 10px;
+  }
+  nav ul div{
+    margin: 15px 0;
+    text-align: left;
+  }
+  nav .profile-name{
+    color: #000;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  nav .profile-email{
+    color: #000;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  nav ul div a{
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  nav ul div a:hover {
+    color: #5CDB95;
   }
 
   .home-section {
