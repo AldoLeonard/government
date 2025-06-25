@@ -961,10 +961,9 @@ footer {
     position: fixed;
     top: 70px;
     right: -100%;
-    width: 50%;
+    width: 40%;
     background: #fff;
     padding: 20px 20px;
-    text-align: center;
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
@@ -975,16 +974,40 @@ footer {
   }
   nav ul li{
     margin: 10px 0;
+    text-align: left;
   }
   nav ul li a{
     font-size: 18px;
     color: #000;
     text-decoration: none;
     transition: 0.3s ease;
+    text-align: left;
   }
   nav ul li a:hover {
     color: #5CDB95;
   }
+
+  .dropdown-menu {
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.dropdown-menu a {
+    color: #333;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.user-dropdown:hover .dropdown-menu {
+    display: block;
+}
 
   .beranda {
     max-width: 100%;
