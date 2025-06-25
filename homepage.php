@@ -274,17 +274,29 @@ if (isset($_POST["cari"])) {
 
         function liveSearch(inputId) {
             const input = document.getElementById(inputId);
+            const searchBox = document.getElementById("search-result");
+
             input.addEventListener("keyup", function() {
-                const keyword = this.value;
-                if (keyword.trim() === "") {
-                    document.getElementById("search-result").innerHTML = "";
+                const keyword = this.value.trim();
+
+                if (keyword === "") {
+                    searchBox.style.display = "none";
+                    searchBox.innerHTML = "";
                     return;
                 }
 
                 const xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        document.getElementById("search-result").innerHTML = xhr.responseText;
+                        const result = xhr.responseText.trim();
+
+                        if (result !== "") {
+                            searchBox.innerHTML = result;
+                            searchBox.style.display = "block";
+                        } else {
+                            searchBox.innerHTML = "<div class='search-item'>Tidak ditemukan berita.</div>";
+                            searchBox.style.display = "block";
+                        }
                     }
                 };
                 xhr.open("GET", "search.php?keyword=" + encodeURIComponent(keyword), true);
