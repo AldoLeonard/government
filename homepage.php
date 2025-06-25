@@ -7,12 +7,9 @@ $berita = query("SELECT * FROM berita ORDER BY tanggal DESC LIMIT 9");
 $berita_populer = query("SELECT * FROM berita ORDER BY views DESC LIMIT 5");
 $artikel = query("SELECT * FROM artikel ORDER BY tanggal DESC LIMIT 3");
 
-
 if (isset($_POST["cari"])) {
     $berita = cary($_POST["keyword"]);
 }
-
-
 ?>
 
 
@@ -106,12 +103,13 @@ if (isset($_POST["cari"])) {
                     <h1>Berita</h1>
                     <p>Baca Berita Terkini di Kabupaten Cirebon</p>
                 </div>
+                <!-- search box mobile -->
                 <div class="search-box-mobile">
                     <form action="" method="post">
-                            <i class="bx bx-search"></i>
-                            <input type="text" name="keyword" placeholder="Cari Berita..."
-                                autocomplete="off" id="keyword">
-                            <button type="submit" name="cari" id="tombol-cari"></button>
+                        <i class="bx bx-search"></i>
+                        <input type="text" name="keyword" placeholder="Cari Berita..."
+                            autocomplete="off" id="keyword-mobile">
+                        <button type="submit" name="cari" id="tombol-cari"></button>
                     </form>
                 </div>
                 <div class="pattern-1">
@@ -136,15 +134,16 @@ if (isset($_POST["cari"])) {
                 </section>
             </div>
             <div class="berita-kanan">
+                <!-- search box web -->
                 <form action="" method="post">
                     <div class="search-box">
                         <i class="bx bx-search"></i>
                         <input type="text" name="keyword" placeholder="Cari Berita..."
-                            autocomplete="off" id="keyword">
+                            autocomplete="off" id="keyword-desktop">
+
                         <button type="submit" name="cari" id="tombol-cari"></button>
                 </form>
-                <div class="live-box">
-                </div>
+                <div id="search-result"></div>
             </div>
             <div class="twibbon">
                 <div class="twibbon-title">
@@ -178,7 +177,6 @@ if (isset($_POST["cari"])) {
                                 </div>
                             <?php endforeach ?>
                         </div>
-
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
                     </div>
@@ -207,7 +205,6 @@ if (isset($_POST["cari"])) {
                     </div>
                 <?php endforeach; ?>
             </section>
-
         </div>
     </section>
 
@@ -249,7 +246,6 @@ if (isset($_POST["cari"])) {
 
 
     <!-- link to js -->
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <script>
@@ -272,6 +268,32 @@ if (isset($_POST["cari"])) {
                 document.getElementById("click").checked = false;
             });
         });
+        var keyword = document.getElementById('keyword');
+        var tombolCari = document.getElementById('tombol-cari');
+        var container = document.getElementById('container');
+
+        function liveSearch(inputId) {
+            const input = document.getElementById(inputId);
+            input.addEventListener("keyup", function() {
+                const keyword = this.value;
+                if (keyword.trim() === "") {
+                    document.getElementById("search-result").innerHTML = "";
+                    return;
+                }
+
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById("search-result").innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.open("GET", "search.php?keyword=" + encodeURIComponent(keyword), true);
+                xhr.send();
+            });
+        }
+
+        liveSearch("keyword-desktop");
+        liveSearch("keyword-mobile");
     </script>
 
 </body>
