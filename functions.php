@@ -173,22 +173,31 @@ function registrasi($data)
     $email = $data["email"];
     $password = mysqli_real_escape_string($conn, $data["password"]);
 
-    //cek username udah ada tau belum
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-    if (mysqli_fetch_assoc($result)) {
-        echo "<script>
-        alert('username sudah terdaftar');
-        </script>";
-
+    // Validasi email harus @gmail.com
+    if (!preg_match("/^[\w\-\.]+@gmail\.com$/", $email)) {
+        $_SESSION['register_error'] = 'Email harus menggunakan @gmail.com';
         return false;
     }
 
-    //enkripsi password
+    // Validasi password minimal 8 karakter
+    if (strlen($password) < 8) {
+        $_SESSION['register_error'] = 'Password harus minimal 8 karakter';
+        return false;
+    }
+
+    // Cek username sudah ada atau belum
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)) {
+        $_SESSION['register_error'] = 'Username sudah terdaftar';
+        return false;
+    }
+
+    // Enkripsi password
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    //tambahkan user baru ke database
+    // Tambahkan user baru ke database
     mysqli_query($conn, "INSERT INTO user VALUES (NULL, '$username', '$email', '$password')");
 
     return mysqli_affected_rows($conn);
 }
+

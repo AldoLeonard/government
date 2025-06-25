@@ -25,17 +25,34 @@ if (isset($_POST["login"])) {
     $error = true;
 }
 
+
 if (isset($_POST["register"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    if (!preg_match('/@gmail\.com$/', $email)) {
+        $_SESSION['register_error'] = "Email harus menggunakan domain @gmail.com";
+        header("Location: login.php");
+        exit;
+    }
+
+    if (strlen($password) < 8) {
+        $_SESSION['register_error'] = "Password harus terdiri dari minimal 8 karakter";
+        header("Location: login.php");
+        exit;
+    }
+
     if (registrasi($_POST) > 0) {
         $_SESSION['register_success'] = true;
         header("Location: login.php");
         exit;
     } else {
-        $_SESSION['register_error'] = true;
+        $_SESSION['register_error'] = "Username sudah terdaftar!";
         header("Location: login.php");
         exit;
     }
 }
+
 
 
 ?>
@@ -73,9 +90,9 @@ if (isset($_POST["register"])) {
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
 
-                    <div class="checkbox-text">
+                    <!-- <div class="checkbox-text">
                         <a href="#" class="text">Forgot password?</a>
-                    </div>
+                    </div> -->
 
                     <div class="input-field button">
                         <input type="submit" name="login" value="Masuk">
@@ -124,6 +141,41 @@ if (isset($_POST["register"])) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        document.querySelector('.form.signup form').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            if (!emailPattern.test(email)) {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Email Tidak Valid!',
+                    text: 'Email harus menggunakan domain @gmail.com',
+                    customClass: {
+                    popup: 'my-swal-popup',
+                    confirmButton: 'my-swal-button'
+                },
+                buttonStyling: false
+                });
+                return;
+            }
+
+            if (password.length < 8) {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Password Terlalu Pendek!',
+                    text: 'Password harus terdiri dari minimal 8 karakter',
+                    customClass: {
+                    popup: 'my-swal-popup',
+                    confirmButton: 'my-swal-button'
+                },
+                buttonStyling: false
+                })
+            }
+        })
         const container = document.querySelector(".container"),
             pwShowHide = document.querySelectorAll(".showHidePw"),
             pwFields = document.querySelectorAll(".password"),
@@ -178,7 +230,7 @@ if (isset($_POST["register"])) {
             Swal.fire({
                 icon: 'error',
                 title: 'Pendaftaran Gagal!',
-                text: 'Username mungkin sudah digunakan.',
+                text: '<?= $_SESSION['register_error'] ?>',
                 confirmButtonText: 'Coba Lagi',
                 customClass: {
                     popup: 'my-swal-popup',
@@ -188,7 +240,6 @@ if (isset($_POST["register"])) {
             });
         <?php unset($_SESSION['register_error']);
         endif; ?>
-
         <?php if (isset($error)): ?>
             Swal.fire({
                 icon: 'error',
