@@ -1243,7 +1243,7 @@ footer {
 .search-box-mobile form i{
   position: absolute;
   color: #5CDB95;
-  top: 35%;
+  top: 50%;
   left: 15px;
   font-size: 20px;
   transform: translateY(-50%);

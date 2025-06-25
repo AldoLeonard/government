@@ -109,8 +109,8 @@ if (isset($_POST["cari"])) {
                         <i class="bx bx-search"></i>
                         <input type="text" name="keyword" placeholder="Cari Berita..."
                             autocomplete="off" id="keyword-mobile">
-                        <button type="submit" name="cari" id="tombol-cari"></button>
                     </form>
+                    <div id="search-result"></div>
                 </div>
                 <div class="pattern-1">
                 </div>
@@ -140,8 +140,6 @@ if (isset($_POST["cari"])) {
                         <i class="bx bx-search"></i>
                         <input type="text" name="keyword" placeholder="Cari Berita..."
                             autocomplete="off" id="keyword-desktop">
-
-                        <button type="submit" name="cari" id="tombol-cari"></button>
                 </form>
                 <div id="search-result"></div>
             </div>
