@@ -9,11 +9,12 @@
 }
 
 body{
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #f4f4f4;
+    z-index: 1;
 }
 
 .container{
@@ -24,7 +25,6 @@ body{
     border-radius: 25px;
     overflow: hidden;
     margin: 0 20px;
-    z-index: 0;
 }
 
 .container .forms{
@@ -182,6 +182,7 @@ body{
 .my-swal-popup {
     border-radius: 30px;
     padding: 20px;
+    z-index: 999;
 }
 
 .my-swal-button {

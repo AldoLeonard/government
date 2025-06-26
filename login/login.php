@@ -120,7 +120,7 @@ if (isset($_POST["register"])) {
                         <i class='bx bxs-envelope icon'></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="password" id="password" class="password" placeholder="Password" required>
+                        <input type="password" name="password" id="registre_password" class="password" placeholder="Password" required>
                         <i class='bx bxs-lock icon'></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
@@ -143,7 +143,7 @@ if (isset($_POST["register"])) {
     <script>
         document.querySelector('.form.signup form').addEventListener('submit', function(e) {
             const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
+            const password = document.getElementById('register_password').value;
 
             const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
