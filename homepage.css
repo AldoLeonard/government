@@ -613,8 +613,6 @@ nav ul li a:hover{
     transition: all 0.3s ease;
 }
 
-
-
 .views {
   margin-left: 20px;
   font-size: 0.9em;
@@ -1371,12 +1369,30 @@ footer {
 }
 
 .text-populer {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .text-populer a {
-  margin: 10px 0 10px 0;
+  margin: 5px 0 5px 0;
+}
+
+.views {
+  margin-left: 20px;
+  font-size: 0.9em;
+  display: flex;
+}
+
+.views p {
+  font-size: 0.9em;
+}
+
+.views i {
+  margin-top: 3px;
+  display: block;
+  margin-right: 10px;
+  color: red;
 }
 
 .wisata-title h1 {
