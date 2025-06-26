@@ -153,6 +153,9 @@ if (isset($_POST["cari"])) {
                             <a href="detail.php?id=<?= $pop['id']; ?>">
                                 <?= substr($pop['judul'], 0, 60); ?>
                             </a>
+                            <div class="views"<?= $pop['id']; ?>>
+                                <i class="fa-solid fa-eye"></i><p><?= $pop['views'];?> Kali Dilihat</p>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
