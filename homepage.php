@@ -171,7 +171,12 @@ if (isset($_POST["cari"])) {
                             <!-- Slides -->
                             <?php foreach ($galeri as $row) : ?>
                                 <div class="swiper-slide">
-                                    <p><?= $row['nama']; ?></p><img src="../government/dashboard/data galeri/images/<?php echo $row['gambar']; ?>" alt="">
+                                    <div class="slide-wrapper">
+                                        <img src="../government/dashboard/data galeri/images/<?php echo $row['gambar']; ?>" alt="">
+                                        <div class="swiper-caption">
+                                            <p><?= $row['nama']; ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -194,7 +199,7 @@ if (isset($_POST["cari"])) {
                 <?php foreach ($artikel as $row): ?>
                     <div class="post-box">
                         <a href="detail_artikel.php?id=<?= $row['id']; ?>">
-                            <img src="images/<?= $row['gambar']; ?>" alt="" class="post-img">
+                            <img src="../government/dashboard/data artikel/images/<?= $row['gambar']; ?>" alt="" class="post-img">
                             <h2 class="category">Artikel</h2>
                             <a href="" class="post-title"><?= $row['judul']; ?></a>
                             <span class="post-date"><?= $row['tanggal']; ?></span>
