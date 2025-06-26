@@ -10,7 +10,7 @@
   
   body {
       background: rgb(247, 250, 255);
-      height: 100vh;
+      min-height: 100vh;
       display: grid;
       place-content: center;
 
