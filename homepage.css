@@ -1076,6 +1076,104 @@ footer {
 }
 @media (max-width: 1028px) {
 
+  nav{
+      display: flex;
+      height: 60px;
+      width: 100%;
+      background: #fff;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px 0 30px;
+      flex-wrap: wrap;
+      position: absolute;
+      z-index: 1000;
+    }
+
+    nav .logo-img img {
+      display: block;
+      width: 30px;
+      margin: auto;
+    }
+
+    nav .logo-text{
+      color: #000;
+      line-height: 1;
+      margin: auto;
+      margin-left: 10px;
+      font-family: 'Raleway', sans-serif;
+      display: block;
+    }
+
+    nav .logo-text span {
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    nav .logo-text p {
+      font-weight: bold;
+      font-size: 15px;
+      color: #5CDB95;
+    }
+
+  nav .menu-btn i{
+    display: block;
+    cursor: pointer;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 30%;
+    background: #fff;
+    padding: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: block;
+  }
+  #click:checked ~ ul{
+    right: 10px;
+  }
+  nav ul li{
+    margin: 10px 0;
+    text-align: left;
+  }
+  nav ul li a{
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s ease;
+    text-align: left;
+  }
+  nav ul li a:hover {
+    color: #5CDB95;
+  }
+
+  .dropdown-menu {
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.dropdown-menu a {
+    color: #333;
+    padding: 12px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+}
+
+.user-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .beranda {
     height: 50vh;
 }
@@ -1174,6 +1272,56 @@ footer {
 
 .profil-btn:hover {
   background-color: #3f9565;
+}
+
+.berita {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.berita-kiri {
+  width: 65%;
+}
+
+.berita-kanan {
+  width: 35%;
+}
+
+.post {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.post-box {
+  background: #fff;
+  box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+  padding: 15px;
+  border-radius: 0.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.berita-bawah {
+  padding: 40px 40px;
+}
+
+.berita-judul h1::after {
+  width: 80%;
+}
+.twibbon-title h1::before {
+  display: none;
+}
+.twibbon-title h1::after {
+  display: none;
+}
+.wisata-title h1::before {
+  width: 20px;
+}
+.wisata-title h1::after {
+  width: 20px;
 }
 
 
