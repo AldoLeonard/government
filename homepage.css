@@ -1541,9 +1541,6 @@ footer .socials li a{
 
 }
 
-
-
-
 @media (max-width: 1280px) {
   .profil-container {
     width: 100%;
@@ -1586,7 +1583,19 @@ footer .socials li a{
   width: 85%;
 }
 
+.search-box {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
 
+.twibbon-title h1::before {
+  width: 20px;
+}
+.twibbon-title h1::after {
+  width: 20px;
+}
 
 
 }
