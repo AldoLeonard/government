@@ -1582,6 +1582,10 @@ footer .socials li a{
   width: 20%;
 }
 
+.berita-judul h1::after {
+  width: 85%;
+}
+
 
 
 
