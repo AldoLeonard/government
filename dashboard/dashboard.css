@@ -406,6 +406,131 @@ table>tbody>tr:nth-child(even) {
   display: none;
 }
 
+@media (max-width: 1024px) {
+    .sidebar.close .nav-links li .sub-menu{
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #5CDB95;
+    padding: 15px 20px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .menu-btn i {
+    font-size: 24px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .mobile-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+
+  nav ul{
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 50%;
+    background: #fff;
+    padding: 20px 20px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  #click {
+    display: none;
+  }
+  
+  #click:checked ~ ul{
+    right: 10px;
+  }
+  nav ul div{
+    margin: 15px 0;
+    text-align: left;
+  }
+  nav .profile-name{
+    color: #000;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  nav .profile-email{
+    color: #000;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  nav ul div a{
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  nav ul div a:hover {
+    color: #5CDB95;
+  }
+
+  .home-section {
+    margin-top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+.cards {
+  margin-top: 10px;
+  display: grid;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+  .sidebar{
+    width: 100%;
+    background-color: #5CDB95;
+  }
+  .sidebar.close{
+    width: 0;
+  }
+  .home-section{
+    left: 78px;
+    width: calc(100% - 78px);
+    z-index: 100;
+  }
+
+    .home-section .home-content{
+    height: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .home-content .text {
+    display: none;
+  }
+
+  .sidebar.close ~ .home-section{
+    width: 100%;
+    left: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar.close .nav-links li .sub-menu{
     display: none;
