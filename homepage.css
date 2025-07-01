@@ -1597,5 +1597,12 @@ footer .socials li a{
   width: 20px;
 }
 
+.wisata-title h1::before {
+  width: 50px;
+}
+.wisata-title h1::after {
+  width: 50px;
+}
+
 
 }
