@@ -45,7 +45,7 @@ if (isset($_SESSION['upload_error'])) {
             </div>
             <div class="nama-btn">
                 <label for="tanggal">Tanggal</label>
-                <input type="text" name="tanggal" id="tanggal" required>
+                <input type="date" name="tanggal" id="tanggal" required>
             </div>
         </div>
         <!-- baris 2 -->

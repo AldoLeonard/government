@@ -412,7 +412,7 @@ nav ul li a:hover{
 
 .post {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,auto));
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
   justify-content: center;
   gap: 1.5rem;
   position: relative;
@@ -478,6 +478,7 @@ nav ul li a:hover{
 
 .berita-kanan {
   width: 30%;
+
 }
 
 .search-box-mobile {
@@ -537,11 +538,12 @@ nav ul li a:hover{
   margin: auto;
   position: relative;
   display: block;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 }
 
 .twibbon-card {
   margin: auto;
-  width: 300px;
+  width: 80%;
   background: rgb(255, 255, 255);
   position: relative;
   border-radius: 0.5rem;
@@ -681,7 +683,7 @@ nav ul li a:hover{
 
 .swiper-box {
   margin: auto;
-  width: 300px;
+  width: 80%;
   background: rgb(255, 255, 255);
   position: relative;
   border-radius: 0.5rem;
@@ -1515,3 +1517,8 @@ footer .socials li a{
 }
 
 }
+
+/* @media (max-width: 1024px) {
+
+
+} */

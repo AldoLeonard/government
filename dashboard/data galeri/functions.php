@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "tubes");
+$conn = mysqli_connect("localhost", "root", "", "government");
 
 function query($query)
 {
