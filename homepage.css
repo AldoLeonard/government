@@ -214,13 +214,21 @@ nav ul li a:hover{
     display: flex;
 }
 
+.profil-kiri {
+  width: 50%;
+}
+
+.profil-kanan {
+  width: 50%;
+}
+
 
 .profil-text {
     box-sizing: border-box;
     display: block;
     text-align: left;
     max-width: 100%;
-    width: 50%;
+    width: 100%;
     position: relative;
     margin: 10px 20px 20px 0px;
 }
@@ -300,7 +308,7 @@ nav ul li a:hover{
     display: block;
     position: relative;
     margin: 30px 20px 30px 20px;
-    width: 50%; 
+    width: 100%; 
     background: #000;                              
 }
 
@@ -1159,8 +1167,8 @@ footer {
     max-width: 100%;
     width: 100%;
     margin: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .profil-isi {
@@ -1171,8 +1179,23 @@ footer {
   align-items: center;
 }
 
+.profil-kiri {
+ width: 100%;
+}
+
+.profil-kanan {
+ width: 100%;
+}
+
+
 .profil-content {
-  width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: block;
+    position: relative;
+    margin: 0 0;
+    width: 100%; 
+    background: #000;                              
 }
 
 .profil-content iframe {
@@ -1518,7 +1541,48 @@ footer .socials li a{
 
 }
 
-/* @media (max-width: 1024px) {
 
 
-} */
+
+@media (max-width: 1280px) {
+  .profil-container {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profil {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.profil-isi {
+  width: 100%;
+  display: flex;
+  padding: 0 10px;
+}
+
+.profil-kiri {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.profil-kanan {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.profil-text {
+    width: 100%;
+}
+
+.profil-text h1::after {
+  width: 20%;
+}
+
+
+
+
+}

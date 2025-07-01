@@ -83,13 +83,17 @@ if (isset($_POST["cari"])) {
         <section class="profil-container">
             <div class="profil">
                 <div class="profil-isi">
+                    <div class="profil-kiri">
                     <div class="profil-text">
                         <h1>Profil Singkat Kabupaten Cirebon</h1>
                         <p>Kabupaten Cirebon adalah kabupaten di Provinsi Jawa Barat, Indonesia. Ibu kotanya adalah Kecamatan Sumber. Kabupaten ini berada di ujung timur Jawa Barat serta menjadi pintu gerbang masuk provinsi Jawa Barat dari wilayah timur Jawa. Kabupaten Cirebon, yang bentuk nonformalnya adalah Cirbon atau Cerbon, merupakan produsen beras unggulan yang berada di jalur Pantura. Kabupaten Cirebon merupakan bagian dari wilayah Propinsi Jawa Barat yang terletak dibagian timur dan merupakan batas, sekaligus sebagai pintu gerbang Propinsi Jawa Tengah. Dalam sektor pertanian Kabupaten Cirebon merupakan salah satu daerah produsen beras yang terletak dijalur pantura.</p>
                         <a href="https://id.wikipedia.org/wiki/Kabupaten_Cirebon" class="profil-btn">Selengkapnya</a>
                     </div>
+                    </div>
+                    <div class="profil-kanan">
                     <div class="profil-content">
                         <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/MNFpoSCCf8E?rel=0&modestbranding=1&playsinline=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     </div>
                 </div>
             </div>
